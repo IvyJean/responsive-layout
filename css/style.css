@@ -45,6 +45,12 @@ p.fo2:hover {
   color: red;
 }
 
+/* --------------- */
+
+
+
+/* --------------- */
+
 /* Header/Blog Title */
 .header {
   padding: 15px;
@@ -107,7 +113,7 @@ header .highlight {
 .nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: gray;
+  color: white;
 }
 
 .navbar a {
