@@ -101,10 +101,13 @@ header .highlight {
 .nav {
   float: right;
   margin: 0 -1rem;
+
 }
 
 .nav a {
   margin: 0 1rem;
+  text-decoration: none;
+  color: gray;
 }
 
 .navbar a {
@@ -306,7 +309,7 @@ ul#horizontal-list li {
 
 .comment_box:focus {
   outline: none;
-  border-color: #7ab0e6;
+  border-color: black;
 }
 
 .input_box {
