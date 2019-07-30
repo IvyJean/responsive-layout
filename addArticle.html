@@ -29,51 +29,37 @@
 				<div class="stream">
 					<!-- <h1>Recent Articles</h1> -->
 					<article class="article">
-                                
-                 <!-- <div class="small-container">
-                    <h1>New Tab App</h1>
-                       <form id="myList">
-                          <input id="item" type="text" placeholder="New">
-                       </form>
-                                    
-                       <h2>Items</h2>
-                       <ul></ul>
-                                    
-                      <button>Clear All</button>
-                </div> -->
-
-                  <h3>Create new article</h3>
-                  <form id="form" autocomplete="off">
-                      <div class="form-group">
-                        <label>Title</label><br>
-                        <input type="text" class="form-control" id="title" placeholder=" ">
-					  </div>
-					  <br>
-                      <div class="form-group">
-                        <textarea style="width:95%;" type="text" class="form-control" id="content-text" placeholder=" "></textarea><br>
-                      </div>
-                      <button id="btn" type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-<!-- 
-                        <h1>New Tab App</h1>
-                    
-                        <form>
-                          <input id="item" type="text" placeholder="New">
-                        </form>
-                    
-                        <h2>Items</h2>
-                        <ul></ul>
-                    
-                        <button>Clear All</button> -->
-                     
-
-      <!-- <div class="row marketing">
-        <div class="col-lg-12">
-          <div id="bookmarksResults"></div>
-        </div>
-      </div> -->
-						
-         </article>
+						<h1>Create</h1>
+						<div>
+						  <form>
+							<label class="field">
+							  <span class="label">
+								Title:
+							  </span>
+							  <input
+								id="article-title"
+								type="text"
+								placeholder="Type in title.."
+							  />
+							  <br /><br />
+							  <span class="label">
+								Content:
+							  </span>
+							  <textarea
+								id="article-content"
+								name="content"
+								placeholder="Content here..."
+							  ></textarea>
+							</label>
+							<br /><br />
+							<div class="action">
+							  <button id="btn-save" type="submit">
+								Post
+							  </button>
+							</div>
+						  </form>
+						</div>
+					  </article>
 
              
 				</div>

@@ -1,49 +1,93 @@
-const form = document.querySelector("form");
-const ul = document.querySelector("ul");
-const button = document.querySelector("button");
-// const title = document.getElementById("title");
-// const content = document.getElementById("content");
-// let itemsArray = localStorage.getItem("items")
-//   ? JSON.parse(localStorage.getItem("items"))
-//   : [];
+// let template = document.getElementById("template");
+// let articlesTitle = document.getElementById("article-text");
+// let articleWrapper = template.content.querySelector("article");
+// let title = articleWrapper.querySelector("#article-title");
+// let timestamp = articleWrapper.querySelector("#article-timestamp");
+// let content = articleWrapper.querySelector("#article-content");
 
-// a conditional statement that checks if localStorage already exists
-// if (localStorage.getItem('items')) {
-//     items = JSON.parse(localStorage.getItem('items'))
-// } else {
-//     items = []
+
+// let articles = [];
+
+// console.log(document.getElementById("content".value));
+
+// const addArticle = e => {
+//   e.preventDefault();
+//   let article = {
+//     id: Date(),
+//     title: document.getElementById("title").value,
+//     content: document.getElementById("content-text").value
+//   };
+
+//   articles.push(article);
+//   console.log(articles);
+
+//   localStorage.setItem("itemArray", JSON.stringify(articles));
+// };
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.getElementById("btn").addEventListener("click", addArticle);
+// });
+
+// function displayList(articles) {
+//   title.innerHTML = articles.title;
+//   timestamp.innerHTML = articles.timestamp;
+//   content.innerHTML = articles.content;
+//   btn_delete.setAttribute("id", articles.id);
+//   console.log("ID:", btn_delete.getAttribute("id"));
 // }
 
-let articles = [];
+var template = document.getElementById("template");
+var articlesTitle = document.getElementById("article-text");
+var articleWrapper = template.content.querySelector("article");
+var title = articleWrapper.querySelector("#article-title");
+var timestamp = articleWrapper.querySelector("#article-timestamp");
+var content = articleWrapper.querySelector("#article-content");
+var btn_delete = articleWrapper.querySelector("#btn-delete");
+var primary_id = 0;
+var articleList;
 
-console.log(document.getElementById("content".value));
 
-const addArticle = e => {
-  e.preventDefault();
-  let article = {
-    id: Date(),
-    title: document.getElementById("title").value,
-    content: document.getElementById("content-text").value
-  };
+if (!!window.localStorage.getItem("articleList")) {
+  articleList = JSON.parse(window.localStorage.getItem("articleList"));
+  } else {
+    console.log("EMPTY");
+    articlesTitle.innerHTML = "<center>No Articles</center>";
+    article_List = [];
+  }
+  showList();
 
-  articles.push(article);
-  console.log(articles);
 
-  localStorage.setItem("itemArray", JSON.stringify(articles));
-};
+// crud
+function showList() {
+  if (!!article_List.length) {
+    getLastTaskId();
+    for (var item in article_List) {
+      var articles = article_List[item];
+      displayList(articles);
+      var imp = document.importNode(articleWrapper, true);
+      document.getElementById("main").appendChild(imp);
+      console.log(articles);
+    }
+  }
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("btn").addEventListener("click", addArticle);
-});
+function displayList(articles) {
+  title.innerHTML = articles.title;
+  timestamp.innerHTML = articles.timestamp;
+  content.innerHTML = articles.content;
+  btn_delete.setAttribute("id", articles.id);
+  console.log("ID:", btn_delete.getAttribute("id"));
+}
 
-// button.addEventListener('click', function(e) {
-//     e.preventDefault()
+function removeTask(e) {
+  console.log("Hello");
+}
 
-//     itemsArray.push(title.value)
-//     itemsArray.push(content.value)
-//     localStorage.setItem('items', JSON.stringify(itemsArray))
-//     console.log(itemsArray);
-//   })
+//common
+function getLastTaskId() {
+  var lastArticle = article_List[article_List.length - 1];
+  primary_id = lastArticle.id + 1;
+  console.log("LAST ID: ", primary_id);
+}
 
-//   localStorage.setItem('items', JSON.stringify(itemsArray))
-//   const data = JSON.parse(localStorage.getItem('items'))
+init();
