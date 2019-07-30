@@ -1,77 +1,49 @@
-// let list = document.querySelector("select");
-// let note = document.querySelector("textarea");
+const form = document.querySelector("form");
+const ul = document.querySelector("ul");
+const button = document.querySelector("button");
+// const title = document.getElementById("title");
+// const content = document.getElementById("content");
+// let itemsArray = localStorage.getItem("items")
+//   ? JSON.parse(localStorage.getItem("items"))
+//   : [];
 
-// let state;
-// function setState(newState) {
-//   list.textContent = "";
-//   for (let name of Object.keys(newState.notes)) {
-//     let option = document.createElement("option");
-//     option.textContent = name;
-//     if (newState.selected == name) option.selected = true;
-//     list.appendChild(option);
-//   }
-//   note.value = newState.notes[newState.selected];
-
-//   localStorage.setItem("Notes", JSON.stringify(newState));
-//   state = newState;
+// a conditional statement that checks if localStorage already exists
+// if (localStorage.getItem('items')) {
+//     items = JSON.parse(localStorage.getItem('items'))
+// } else {
+//     items = []
 // }
-// setState(
-//   JSON.parse(localStorage.getItem("Notes")) || {
-//     notes: { "shopping list": "Carrots\nRaisins" },
-//     selected: "shopping list"
-//   }
-// );
 
-// list.addEventListener("change", () => {
-//   setState({ notes: state.notes, selected: list.value });
-// });
-// note.addEventListener("change", () => {
-//   setState({
-//     notes: Object.assign({}, state.notes, { [state.selected]: note.value }),
-//     selected: state.selected
-//   });
-// });
-// document.querySelector("button").addEventListener("click", () => {
-//   let name = prompt("Note name");
-//   if (name)
-//     setState({
-//       notes: Object.assign({}, state.notes, { [name]: "" }),
-//       selected: name
-//     });
-// });
+let articles = [];
 
-const form = document.querySelector('form');
-// const ul = document.querySelector('ul');
-// const button = document.querySelector('button');
-// const input = document.getElementById('item');
-let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+console.log(document.getElementById("content".value));
 
-localStorage.setItem('items', JSON.stringify(itemsArray));
-const data = JSON.parse(localStorage.getItem('items'));
-
-const liMaker = (text) => {
-  const li = document.createElement('li');
-  li.textContent = text;
-  ul.appendChild(li);
-}
-
-form.addEventListener('submit', function (e) {
+const addArticle = e => {
   e.preventDefault();
+  let article = {
+    id: Date(),
+    title: document.getElementById("title").value,
+    content: document.getElementById("content-text").value
+  };
 
-  itemsArray.push(input.value);
-  localStorage.setItem('items', JSON.stringify(itemsArray));
-  liMaker(input.value);
-  input.value = "";
+  articles.push(article);
+  console.log(articles);
+
+  localStorage.setItem("itemArray", JSON.stringify(articles));
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btn").addEventListener("click", addArticle);
 });
 
-data.forEach(item => {
-  liMaker(item);
-});
+// button.addEventListener('click', function(e) {
+//     e.preventDefault()
 
-button.addEventListener('click', function () {
-  localStorage.clear();
-  while (ul.firstChild) {
-    ul.removeChild(ul.firstChild);
-  }
-  itemsArray = [];
-});
+//     itemsArray.push(title.value)
+//     itemsArray.push(content.value)
+//     localStorage.setItem('items', JSON.stringify(itemsArray))
+//     console.log(itemsArray);
+//   })
+
+//   localStorage.setItem('items', JSON.stringify(itemsArray))
+//   const data = JSON.parse(localStorage.getItem('items'))
