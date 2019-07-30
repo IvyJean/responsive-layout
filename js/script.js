@@ -16,12 +16,10 @@ const button = document.querySelector("button");
 
 let articles = [];
 
-console.log(document.getElementById("content".value));
-
 const addArticle = e => {
   e.preventDefault();
   let article = {
-    id: Date(),
+    timeStamp: Date(),
     title: document.getElementById("title").value,
     content: document.getElementById("content-text").value
   };
@@ -36,14 +34,3 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn").addEventListener("click", addArticle);
 });
 
-// button.addEventListener('click', function(e) {
-//     e.preventDefault()
-
-//     itemsArray.push(title.value)
-//     itemsArray.push(content.value)
-//     localStorage.setItem('items', JSON.stringify(itemsArray))
-//     console.log(itemsArray);
-//   })
-
-//   localStorage.setItem('items', JSON.stringify(itemsArray))
-//   const data = JSON.parse(localStorage.getItem('items'))
