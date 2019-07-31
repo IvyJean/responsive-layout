@@ -70,37 +70,37 @@
         </div>
         <div class="centercolumn">
           <div class="cardlong">
-            <!-- <img src="src/cover.jpg" width="100%" height="400px" style="border-radius: 8px;"> -->
-            <h2>Technology</h2>
-            <p style="font-size: 12px; font-weight: bold;"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
-              July 17, 2019	10:00 AM
-            </time></p>
-            
-							<section>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod aliquam.
-									Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod aliquam.
-									Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod aliquam.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod aliquam.
-									Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod aliquam.
-									Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod aliquam.
-								</p>
-							</section>
-               <h3>Leave  a comment</h3>
-               <form action="#" method="post">
-                <textarea class="comment_box"></textarea>
-                <br>
-                <button class="btn" type="submit" value="Submit">Submit</button>
-                </form>
-
-               <p style="font-size: 12px; font-weight: bold;" class="op"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
-								July 17, 2019	10:00 AM
-							</time></p>
-         
-               
-                
+            <div id="stream" class="stream">
+              <div class="articleTitle">
+                <h1 id="articleNotif" class="articleNotif">
+                  <h2 style="text-align: center">List of Articles</h2>
+                </h1>
+              </div>
+              <template id="template">
+                <div class="bodyContainer" id="bodyContainer">
+                  <article class="article" id="article">
+                    <h1 class="title" id="title"></h1>
+                    <time id="subtitle" class="subtitle">Created on: </time>
+                    <br>
+                    <p  style="text-align: justify" class="body-text" id="body"></p>
+                    <div id="delete"></div>
+                  </article>
+                  <!-- <div class="message">
+                    <h2 class="message-title">
+                      Message
+                    </h2>
+                    <div class="message-box">
+                      <textarea rows="10" cols="80"></textarea>
+                    </div>
+                    <div class="submit">
+                      <button class="submit-button">
+                        Submit
+                      </button>
+                    </div>
+                  </div> -->
+                </div>
+              </template>
+              </div>
               </div>
           <div class="card">
             <div class="center">
