@@ -1,36 +1,41 @@
-const form = document.querySelector("form");
-const ul = document.querySelector("ul");
-const button = document.querySelector("button");
-// const title = document.getElementById("title");
-// const content = document.getElementById("content");
-// let itemsArray = localStorage.getItem("items")
-//   ? JSON.parse(localStorage.getItem("items"))
-//   : [];
 
-// a conditional statement that checks if localStorage already exists
-// if (localStorage.getItem('items')) {
-//     items = JSON.parse(localStorage.getItem('items'))
-// } else {
-//     items = []
-// }
+var article_object = JSON.parse(localStorage.getItem("article"));
 
-let articles = [];
+var article_object_copy = article_object.slice(0).reverse();
 
-const addArticle = e => {
-  e.preventDefault();
-  let article = {
-    timeStamp: Date(),
-    title: document.getElementById("title").value,
-    content: document.getElementById("content-text").value
-  };
+var temp = document.querySelector("#template");
+var item = temp.content.querySelector("#bodyContainer");
 
-  articles.push(article);
-  console.log(articles);
+var i;
+for (i = 0; i < article_object_copy.length; i++) {
+  var imp = document.importNode(item, true);
 
-  localStorage.setItem("itemArray", JSON.stringify(articles));
-};
+  var item2 = imp.querySelector("#article");
+  var title = item2.querySelector("#title");
+  var subtitle = item2.querySelector("#subtitle");
+  var body = item2.querySelector("#body");
+  var deleteButton = item2.querySelector("#delete");
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("btn").addEventListener("click", addArticle);
-});
+  var button = document.createElement("button");
+  button.setAttribute("id", i);
+  button.textContent = "Delete Article";
+  deleteButton.appendChild(button);
 
+  function deleteArticle(e) {
+    var removeArticle = e.target.parentNode.parentNode.parentNode;
+    document.getElementById("stream").removeChild(removeArticle);
+
+    article_object_copy.splice(e.target.id, 1);
+    localStorage.setItem("article", JSON.stringify(article_object_copy));
+
+    location.reload();
+  }
+
+  button.addEventListener("click", deleteArticle);
+
+  title.innerHTML = article_object_copy[i].title;
+  subtitle.innerHTML = article_object_copy[i].time;
+  body.innerHTML = article_object_copy[i].body;
+  // imp.setAttribute("id", "article" + i);
+  document.getElementsByClassName("stream")[0].appendChild(imp);
+}
