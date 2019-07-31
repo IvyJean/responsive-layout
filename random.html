@@ -1,3 +1,5 @@
+//HOME
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -110,7 +112,7 @@
   </body>
   <script src="./js/homeScript.js"></script>
 
-———
+———------ CREATE ---------
 
 <!DOCTYPE html>
 <html>
@@ -325,4 +327,354 @@ function getLastTaskId() {
 init();
 
 
-------------------
+-----------MAIN ---------
+
+// post button
+const post = document.querySelector("#submit");
+
+// article stuff
+const titleElement = document.querySelector("#title");
+const bodyElement = document.querySelector("#body");
+
+var options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric"
+};
+
+var article_object;
+if (localStorage.getItem("article")) {
+  article_object = JSON.parse(localStorage.getItem("article"));
+} else {
+  article_object = [];
+}
+
+function article() {
+  var time = new Date().toLocaleString("en-US", options);
+  var a = {
+    title: titleElement.value,
+    body: bodyElement.value,
+    time: time
+  };
+
+  article_object.push(a);
+  localStorage.setItem("article", JSON.stringify(article_object));
+}
+
+post.addEventListener("click", article);
+
+----- DISPLAY -----\
+
+var article_object = JSON.parse(localStorage.getItem("article"));
+
+var article_object_copy = article_object.slice(0).reverse();
+
+var temp = document.querySelector("#template");
+var item = temp.content.querySelector("#article-center");
+
+var i;
+for (i = 0; i < article_object_copy.length; i++) {
+  var imp = document.importNode(item, true);
+
+  var item2 = imp.querySelector("#article");
+  var title = item2.querySelector("#title");
+  var subtitle = item2.querySelector("#subtitle");
+  var body = item2.querySelector("#body");
+  var deleteButton = item2.querySelector("#delete");
+
+  var button = document.createElement("button");
+  button.setAttribute("id", i);
+  button.textContent = "Delete Article";
+  deleteButton.appendChild(button);
+
+  function deleteArticle(e) {
+    var removeArticle = e.target.parentNode.parentNode.parentNode;
+    document.getElementById("bodycenter").removeChild(removeArticle);
+
+    article_object_copy.splice(e.target.id, 1);
+    localStorage.setItem("article", JSON.stringify(article_object_copy));
+
+    location.reload();
+  }
+
+  button.addEventListener("click", deleteArticle);
+
+  title.innerHTML = article_object_copy[i].title;
+  subtitle.innerHTML = article_object_copy[i].time;
+  body.innerHTML = article_object_copy[i].body;
+  imp.setAttribute("id", "article" + i);
+  document.getElementsByClassName("bodycenter")[0].appendChild(imp);
+}
+
+// function delete() {
+
+// }
+
+------ home ----
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Front-End Activity</title>
+    <!-- Link Styles -->
+    <link rel="stylesheet" type="text/css" href="/style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Gochi+Hand|Caveat+Brush|Raleway|Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <span class="logo">
+        <span><img src="/assets/logo.jpg" /> </span>
+        <h1 class="logo-title">
+          odette's vlogs
+        </h1>
+      </span>
+      <span class="link">
+        <a href="" class="links-header">home</a>
+        <a href="./index.html" class="links-header header-active">videos</a>
+        <a href="./new.html" class="links-header">create</a>
+        <a href="" class="links-header">articles</a>
+        <a href="" class="links-header">contact</a>
+      </span>
+    </header>
+    <div class="article-body">
+      <div class="bodycenter2">
+        <div class="link-side">
+          <h2 class="link-title">
+            Navigation
+          </h2>
+          <a href="" class="link-side-class">korea vlog 1</a>
+          <a href="" class="side-active">korea vlog 2</a>
+          <a href="" class="link-side-class">paskuhan vlog</a>
+          <a href="" class="link-side-class">journal</a>
+          <a href="" class="link-side-class">penpal</a>
+        </div>
+
+        <div class="bodycenter" id="bodycenter">
+          <div class="container" id="container">
+            <template id="template">
+              <div class="article-center" id="article-center">
+                <div class="article" id="article">
+                  <h1 class="title" id="title"></h1>
+                  <time id="subtitle" class="subtitle">Created on: </time>
+                  <p class="body-text" id="body"></p>
+                  <div id="delete"></div>
+                </div>
+                <div class="message">
+                  <h2 class="message-title">
+                    Message
+                  </h2>
+                  <div class="message-box">
+                    <textarea rows="10" cols="80"></textarea>
+                  </div>
+                  <div class="submit">
+                    <button class="submit-button">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="search-side">
+          <form action="" id="search">
+            <input type="search" placeholder="Search..." class="search" />
+            <i class="fa fa-search"></i>
+          </form>
+          <div class="side-vid">
+            <h2 class="link-title">
+              More like this
+            </h2>
+            <iframe
+              width="200"
+              height="150"
+              src="https://www.youtube.com/embed/5xBFpQhlmtY"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="side-vid">
+            <iframe
+              width="200"
+              height="150"
+              src="https://www.youtube.com/embed/KE6Fa4m-9Vw"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="side-vid">
+            <iframe
+              width="200"
+              height="150"
+              src="https://www.youtube.com/embed/qpFUJkS9iUo"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-link">
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+      </div>
+      <div class="copyright">
+        odette vlog © 2019 | privacy policy
+      </div>
+    </footer>
+  </body>
+  <script src="/script/display.js"></script>
+</html>
+
+---------- new ---------
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Front-End Activity</title>
+    <!-- Link Styles -->
+    <link rel="stylesheet" type="text/css" href="/style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Gochi+Hand|Caveat+Brush|Raleway|Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <span class="logo">
+        <span><img src="/assets/logo.jpg" /> </span>
+        <h1 class="logo-title">
+          odette's vlogs
+        </h1>
+      </span>
+      <span class="link">
+        <a href="" class="links-header">home</a>
+        <a href="./index.html" class="links-header">videos</a>
+        <a href="./new.html" class="links-header header-active">create</a>
+        <a href="" class="links-header">articles</a>
+        <a href="" class="links-header">contact</a>
+      </span>
+    </header>
+    <div class="article-body">
+      <div class="bodycenter2">
+        <div class="link-side">
+          <h2 class="link-title">
+            Navigation
+          </h2>
+          <a href="" class="link-side-class">korea vlog 1</a>
+          <a href="" class="side-active">korea vlog 2</a>
+          <a href="" class="link-side-class">paskuhan vlog</a>
+          <a href="" class="link-side-class">journal</a>
+          <a href="" class="link-side-class">penpal</a>
+        </div>
+        <div class="bodycenter">
+          <div class="article">
+            <h1 class="title">
+              Create Article
+            </h1>
+            <div>
+              <label>Title </label>
+              <input type="text" id="title" class="title" />
+            </div>
+
+            <div>
+              <p><label>Body</label></p>
+              <textarea id="body" rows="10" cols="90" class="body"></textarea>
+            </div>
+            <form>
+              <div class="submit">
+                <button type="submit" class="submit-button" id="submit">
+                  Post
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="search-side">
+          <form action="" id="search">
+            <input type="search" placeholder="Search..." class="search" />
+            <i class="fa fa-search"></i>
+          </form>
+          <div class="side-vid">
+            <h2 class="link-title">
+              More like this
+            </h2>
+            <iframe
+              width="200"
+              height="150"
+              src="https://www.youtube.com/embed/5xBFpQhlmtY"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="side-vid">
+            <iframe
+              width="200"
+              height="150"
+              src="https://www.youtube.com/embed/KE6Fa4m-9Vw"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="side-vid">
+            <iframe
+              width="200"
+              height="150"
+              src="https://www.youtube.com/embed/qpFUJkS9iUo"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-link">
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+        <a href="" class="link-footer">link</a>
+      </div>
+      <div class="copyright">
+        odette vlog © 2019 | privacy policy
+      </div>
+    </footer>
+  </body>
+  <script src="/script/main.js"></script>
+</html>
+

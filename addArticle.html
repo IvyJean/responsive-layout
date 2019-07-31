@@ -31,36 +31,26 @@
 					<article class="article">
 						<h1>Create new article</h1>
 						<div>
-						  <form>
 							<label class="field">
 							  <span class="label">
 								Title:
 							  </span>
-							  <input
-								id="article-title"
-								type="text"
-								placeholder="Type in title.."
-							  />
+							  <input id="title" class="title" placeholder="" />
 							  <br /><br />
-							  <span class="label">
-								Content:
-							  </span>
-							  <textarea
-								id="article-content"
-								name="content"
-								placeholder="Content here..."
+							  <textarea id="body" class="body"
+								placeholder=""
 							  ></textarea>
 							</label>
 							<br /><br />
-							<div class="action">
-							  <button id="btn-save" type="submit">
-								Post
-							  </button>
-							</div>
-						  </form>
+							<form action="">
+								<div class="action">
+									<button itype="submit" class="submit-button" id="submit">
+									  Post
+									</button>
+								  </div>
+							</form>
 						</div>
 					  </article>
-
              
 				</div>
 			</main>
@@ -82,23 +72,6 @@
 									</li>
 									<li>
 										<a href="archive.html?year=2019&month=3">March</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="archive.html?year=2018">2018</a>
-								<ul>
-									<li>
-										<a href="archive.html?year=2018&month=9">September</a>
-									</li>
-									<li>
-										<a href="archive.html?year=2018&month=8">August</a>
-									</li>
-									<li>
-										<a href="archive.html?year=2018&month=4">April</a>
-									</li>
-									<li>
-										<a href="archive.html?year=2018&month=2">February</a>
 									</li>
 								</ul>
 							</li>
@@ -155,6 +128,6 @@
 				<a href="#">Hello</a>
 			</div>
 		</footer>
-	<script src="js/script.js"></script>
+	<script src="js/article.js"></script>
 </body>
 </html>

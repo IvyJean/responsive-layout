@@ -108,8 +108,8 @@ a:visited {
 }
 
 .sidebar {  
-  background-color: whitesmoke;
-  border-color: var(--sidebar-background-color);
+  background-color: white;
+  border-color: grey;
   padding: 0 2rem;
   box-sizing: border-box;
 }
@@ -170,7 +170,7 @@ div#horizontal-list li {
   margin: 2rem auto;
   padding: 2rem;
   width: 700px;
-  background-color: var(--card-background-color);
+  background-color: white;
   border-color: rgba(0, 0, 0, 0.0625);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0625), 0 0 2px rgba(0, 0, 0, 0.0625);
@@ -193,6 +193,10 @@ div#horizontal-list li {
 
 .article .timestamp {
   font-size: 0.8em;
+}
+
+.articleNotif{
+  color: gainsboro;
 }
 
 .field > .label::after {
@@ -292,6 +296,7 @@ form .actions {
   order: 1;
   padding: 0 2rem;
   flex: auto;
+  background-color: rgb(242, 242, 247)
 }
 
 #search {

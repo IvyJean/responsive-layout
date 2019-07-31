@@ -28,55 +28,36 @@
 
     <div id="content">
 			<main id="main">
-				<div class="stream">
-          <div class="article-title">
-            <h1 id="article-text" style="color: white">
+        <div id="stream" class="stream">
+          <div class="articleTitle">
+            <h1 id="articleNotif" class="articleNotif">
               <center>List of Articles</center>
             </h1>
           </div>
           <template id="template">
-            <div id="bodyContainer">
-              <article id="article-div" class="article">
-                <header>
-                  <h2 id="article-title"></h2>
-                  <time
-                    id="article-timestamp"
-                    class="timestamp"
-                    datetime="2019-07-18T10:00:00+0800"
-                  ></time>
-                </header>
-                <!-- <div>
-                  <p id="article-content"></p>
-                  <button id="btn-edit" type="submit">
-                    Edit Article
-                  </button>
-                  <button id="btn-delete" type="submit">
-                    Delete Article
-                  </button>
-                </div> -->
-                <footer>
-                  <h3>Comments</h3>
-                  <form>
-                    <label class="field">
-                      <span class="label">
-                        Message
-                      </span>
-                      <textarea
-                        name="message"
-                        placeholder="Comment here..."
-                      ></textarea>
-                    </label>
-                    <div class="action">
-                      <button type="submit">
-                        Post
-                      </button>
-                    </div>
-                  </form>
-                </footer>
+            <div class="bodyContainer" id="bodyContainer">
+              <article class="article" id="article">
+                <h1 class="title" id="title"></h1>
+                <time id="subtitle" class="subtitle">Created on: </time>
+                <p class="body-text" id="body"></p>
+                <div id="delete"></div>
               </article>
+              <!-- <div class="message">
+                <h2 class="message-title">
+                  Message
+                </h2>
+                <div class="message-box">
+                  <textarea rows="10" cols="80"></textarea>
+                </div>
+                <div class="submit">
+                  <button class="submit-button">
+                    Submit
+                  </button>
+                </div>
+              </div> -->
             </div>
           </template>
-				</div>
+          </div>
 			</main>
 			<aside id="archive" class="sidebar">
 				<div class="panel">
