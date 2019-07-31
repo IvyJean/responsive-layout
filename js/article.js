@@ -23,13 +23,13 @@ if (localStorage.getItem("article")) {
 
 function article() {
   var time = new Date().toLocaleString();
-  var aObject = {
+  var a = {
     title: titleElement.value,
     body: bodyElement.value,
     time: time
   };
 
-  article_object.push(aObject);
+  article_object.push(a);
   localStorage.setItem("article", JSON.stringify(article_object));
 }
 

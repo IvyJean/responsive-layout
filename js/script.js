@@ -36,7 +36,7 @@ for (i = 0; i < article_object_copy.length; i++) {
   title.innerHTML = article_object_copy[i].title;
   subtitle.innerHTML = article_object_copy[i].time;
   body.innerHTML = article_object_copy[i].body;
-  imp.setAttribute("id", "article" + i);
+  // imp.setAttribute("id", "article" + i);
   document.getElementsByClassName("stream")[0].appendChild(imp);
 }
 
