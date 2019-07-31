@@ -72,17 +72,28 @@
         <div class="centercolumn">
           <div class="cardlong">
 			<h3>Create new article</h3>
-			<form id="form" autocomplete="off">
-				<div class="form-group">
-				  <label>Title</label><br>
-				  <input type="text" class="form-control" id="title" placeholder=" ">
+			<article class="article">
+				<div>
+					<label class="field">
+					  <span class="label">
+						Title:
+					  </span>
+					  <input id="title" class="titleInput" placeholder="" />
+					  <br /><br />
+					  <textarea id="body" class="body"
+						placeholder=""
+					  ></textarea>
+					</label>
+					<br /><br />
+					<form action="">
+						<div class="actions">
+							<button itype="submit" class="submit-button" id="submit">
+							  Post
+							</button>
+						  </div>
+					</form>
 				</div>
-				<br>
-				<div class="form-group">
-				  <textarea style="width:95%;" type="text" class="form-control" id="content-text" placeholder=" "></textarea><br>
-				</div>
-				<button id="btn" type="submit" class="btn btn-primary">Submit</button>
-			  </form>
+			  </article>
           </div>
         
         </div>
