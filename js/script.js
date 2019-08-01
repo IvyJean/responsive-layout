@@ -21,12 +21,3 @@ for (i = 0; i < articleCopy.length; i++) {
   document.getElementsByClassName("stream")[0].appendChild(impNode);
 }
 
-function clear() {
-  if(!window.localStorage.length) {
-    alert("Local storage is empty.");
-  }
-  localStorage.clear();
-  var vlu = document.getElementsByClassName('q');
-  for (var i = 0; i < vlu.length; i++){
-    vlu[i].value = '';
-  }
