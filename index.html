@@ -75,29 +75,27 @@
                 <h1 id="articleNotif" class="articleNotif">
                   <h2 style="text-align: center">List of Articles</h2>
                 </h1>
+                <hr>
+                <br>
               </div>
               <template id="template">
                 <div class="bodyContainer" id="bodyContainer">
                   <article class="article" id="article">
                     <h1 class="title" id="title"></h1>
-                    <time id="subtitle" class="subtitle">Created on: </time>
+                    <time id="tStamp" class="tStamp">Created on: </time>
                     <br>
                     <p  style="text-align: justify" class="body-text" id="body"></p>
-                    <div id="delete"></div>
+                    <div id=""></div>
+                    <h3>Comments</h3>
+                    <form>
+                      <label class="field">
+                        <textarea name="message" placeholder="Write a comment&hellip;"></textarea>
+                      </label>
+                      <div class="actions">
+                        <button type="submit">Post</button>
+                      </div>
+                    </form>
                   </article>
-                  <!-- <div class="message">
-                    <h2 class="message-title">
-                      Message
-                    </h2>
-                    <div class="message-box">
-                      <textarea rows="10" cols="80"></textarea>
-                    </div>
-                    <div class="submit">
-                      <button class="submit-button">
-                        Submit
-                      </button>
-                    </div>
-                  </div> -->
                 </div>
               </template>
               </div>

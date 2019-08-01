@@ -1,41 +1,28 @@
-// post button
-const post = document.querySelector("#submit");
 
-// article stuff
-const titleElement = document.querySelector("#title");
-const bodyElement = document.querySelector("#body");
+const submit = document.querySelector("#submit");
+const titleEl = document.querySelector("#title");
+const bodyEl = document.querySelector("#body");
 
-// var options = {
-//   weekday: "long",
-//   year: "numeric",
-//   month: "long",
-//   day: "numeric",
-//   hour: "numeric",
-//   minute: "numeric"
-// };
-
-var article_object;
-if (localStorage.getItem("article")) {
-  article_object = JSON.parse(localStorage.getItem("article"));
+let article1;
+if (!!window.localStorage.getItem("article")) {
+  article1 = JSON.parse(localStorage.getItem("article"));
 } else {
-  article_object = [];
+  article1 = [];
 }
 
 function article() {
-  var time = new Date().toLocaleString();
-  var a = {
-    title: titleElement.value,
-    body: bodyElement.value,
+  let time = new Date().toLocaleString();
+  let art = {
+    title: titleEl.value,
+    body: bodyEl.value,
     time: time
   };
 
-  article_object.push(a);
-  localStorage.setItem("article", JSON.stringify(article_object));
+  article1.push(art);
+  localStorage.setItem("article", JSON.stringify(article1));
 }
 
-post.addEventListener("click", article);
-
-
+submit.addEventListener("click", article);
 
 // var id = 0;
 // var form_content = document.getElementById("content");
@@ -43,14 +30,13 @@ post.addEventListener("click", article);
 
 // var articleList;
 
-
-  // if (!!window.localStorage.getItem("articleList")) {
-  //   articleList = JSON.parse(window.localStorage.getItem("articleList"));
-  // } else {
-  //   articleList = [];
-  // }
-  // btn_save.addEventListener("click", saveObject);
-  // showList();
+// if (!!window.localStorage.getItem("articleList")) {
+//   articleList = JSON.parse(window.localStorage.getItem("articleList"));
+// } else {
+//   articleList = [];
+// }
+// btn_save.addEventListener("click", saveObject);
+// showList();
 
 // function showList() {
 //   if (!!articleList.length) {
@@ -90,5 +76,3 @@ post.addEventListener("click", article);
 //   window.localStorage.setItem("articleList", JSON.stringify(articleList));
 //   articleList = JSON.parse(window.localStorage.getItem("articleList"));
 // }
-
-
