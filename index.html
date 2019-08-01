@@ -1,139 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet'>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    
-    <title>Chronos</title>
-  </head>
-  <body data-theme="" >
-    <div id="root">
-		<header id="topbar">
-        <div id="branding">
-            <h1><span class="highlight">Chronos</span></h1>
-        </div>
-			<nav class="nav">
-            <a href="index.html">HOME</a>
-            <a href="addArticle.html">ARTICLE</a>
-            <a href="">ABOUT</a>
-			</nav>
-		</header>
-
-
-
-    <div id="content">
-			<main id="main">
-        <div id="stream" class="stream">
-          <div class="articleTitle">
-            <h1 id="articleNotif" class="articleNotif">
-              <h2 style="text-align: center">List of Articles</h2>
-            </h1>
-          </div>
-          <template id="template">
-            <div class="bodyContainer" id="bodyContainer">
-              <article class="article" id="article">
-                <h1 class="title" id="title"></h1>
-                <time id="subtitle" class="subtitle">Created on: </time>
-                <br>
-                <p  style="text-align: justify" class="body-text" id="body"></p>
-                <div id="delete"></div>
-              </article>
-              <!-- <div class="message">
-                <h2 class="message-title">
-                  Message
-                </h2>
-                <div class="message-box">
-                  <textarea rows="10" cols="80"></textarea>
-                </div>
-                <div class="submit">
-                  <button class="submit-button">
-                    Submit
-                  </button>
-                </div>
-              </div> -->
+    <title>Home | Chronos</title>
+</head>
+<body>
+        <header>
+          <div class="container">
+            <div id="branding">
+              <h1><span class="highlight">Chronos</span></h1>
             </div>
-          </template>
+            <nav>
+              <ul>
+                <li class="current"><a href="index.html">Home</a></li>
+                <li><a href="addArticle.html">Article</a></li>
+                <li><a href="services.html">Services</a></li>
+              </ul>
+            </nav>
           </div>
-			</main>
-			<aside id="archive" class="sidebar">
-				<div class="panel">
-					<div class="archive-list">
-						<ul>
-							<li>
-								<a href="archive.html?year=2019">2019</a>
-								<ul>
-									<li>
-										<a href="archive.html?year=2019&month=7">July</a>
-									</li>
-									<li>
-										<a href="archive.html?year=2019&month=6">June</a>
-									</li>
-									<li>
-										<a href="archive.html?year=2019&month=4">April</a>
-									</li>
-									<li>
-										<a href="archive.html?year=2019&month=3">March</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</aside>
-			<aside id="search" class="sidebar">
-				<form class="panel" method="get" action="search.html">
-					<label class="field">
-            <br>
-						<!-- <span class="label">Search</span> -->
-						<input type="search" placeholder="Enter your query here&hellip;" name="q">
-					</label>
-					<div class="actions">
-						<!-- <button type="reset">Clear</button> -->
-            <button type="submit">Go</button>
-          <!-- newsdsds -->
-          </div>
-        </form>
-        <br>
-        <div class="abtme">
-          <img src="src/cb.gif" alt="chocobo" width="100%">
-          <h1 style="font-family: Allura; font-size: 30px" >Hi my name is Ivy! </h1>
-          <p>Welcome to my blog. Sunt in culpa qui officia deseru mollit anim id est laborum.Sunt in culpa qui officia deseru mollit anim id est laborum  </p>
-          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed</p>
-          <!-- <br> -->
-          <h3 style="font-family: Allura; font-size: 30px">Follow Me</h3>
-              <div id="horizontal-list" class="" width="100%">
-                  <li class="icon"><a href="#"  title="twitter"><img src="src/tlogo.png" height="50px"></a></li>
-                  <li class="icon"><a href="#"  title="facebook"><img src="src/flogo.png" height="50px"></a></li>
-                  <li class="icon"><a href="#"  title="instagram"><img src="src/ilogo.png" height="50px"></a></li>
-                  <li class="icon"><a href="#"  title="linkedin"><img src="src/inlogo.png" height="50px"></a></li>
-              </div>
-              <br>
-              <p>Copyright © Ivy Cocharo. <br> 2019 All rights reserved.</p>
-              <br>
-        </div>
-        <br>
-			</aside>
-		</div>
-		<footer id="footer">
-			<div class="footer-links">
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-				<a href="#">Hello</a>
-			</div>
-		</footer>
-	<script src="js/script.js"></script>
-</body>
+        </header>
+    
+        <section id="showcase">
+              <section id="main">
+                  <div class="container">
+                    <article id="main-col">
+                      <h1 class="page-title">About Us</h1>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et magna. Nam eget eros non orci consectetur congue at ac augue. Proin eget arcu in enim feugiat ultricies. Curabitur maximus metus nec metus pretium viverra at et orci. Integer hendrerit ante ut placerat cursus.
+                      </p>
+                      <p class="dark">
+            Aliquam eget pharetra diam. Nulla placerat lorem at turpis tempor, vel ultrices dui tincidunt. Proin quis egestas lorem. Mauris vehicula lectus odio, sit amet dictum justo feugiat a. Praesent id dictum lacus. Sed ullamcorper id erat ut dictum. Fusce porttitor lorem sapien, in aliquet sapien convallis et. Donec nec mauris nulla. Curabitur cursus semper odio, et hendrerit ante. Nunc at cursus ante. Maecenas gravida ligula ut efficitur suscipit. Nulla id turpis varius, pretium nunc sed, fermentum sem. Sed lacinia nunc non interdum pellentesque.
+                      </p>
+                    </article>
+            
+                    <aside id="sidebar">
+                      <div class="dark">
+                        <h3>What We Do</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et magna</p>
+                      </div>
+                    </aside>
+                  </div>
+                </section>
+        </section>
+    
+        <footer>
+          <p>Acme Web Design, Copyright &copy; 2017</p>
+        </footer>
+      </body>
 </html>
