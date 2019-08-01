@@ -3,8 +3,8 @@ let article = JSON.parse(localStorage.getItem("article"));
 let articleCopy = article.slice(0).reverse();
 let temp = document.querySelector("#template");
 let cont = temp.content.querySelector("#bodyContainer");
-
 let i;
+
 for (i = 0; i < articleCopy.length; i++) {
   let impNode = document.importNode(cont, true);
 
