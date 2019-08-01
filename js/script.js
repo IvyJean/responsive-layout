@@ -1,39 +1,32 @@
 
-var article = JSON.parse(localStorage.getItem("article"));
-var articleCopy = article.slice(0).reverse();
-var temp = document.querySelector("#template");
-var cont = temp.content.querySelector("#bodyContainer");
+let article = JSON.parse(localStorage.getItem("article"));
+let articleCopy = article.slice(0).reverse();
+let temp = document.querySelector("#template");
+let cont = temp.content.querySelector("#bodyContainer");
 
-var i;
+let i;
 for (i = 0; i < articleCopy.length; i++) {
-  var imp = document.importNode(cont, true);
+  let impNode = document.importNode(cont, true);
 
-  var contain = imp.querySelector("#article");
-  var title = contain.querySelector("#title");
-  var tStamp = contain.querySelector("#tStamp");
-  var body = contain.querySelector("#body");
-  // var deleteButton = contain.querySelector("#delete");
+  let contain = impNode.querySelector("#article");
+  let title = contain.querySelector("#title");
+  let tStamp = contain.querySelector("#tStamp");
+  let body = contain.querySelector("#body");
 
-  var button = document.createElement("button");
-  // button.setAttribute("id", i);
-  // button.textContent = "Delete Article";
-  // deleteButton.appendChild(button);
-
-  function deleteArticle(e) {
-    var removeArticle = e.target.parentNode.parentNode.parentNode;
-    document.getElementById("stream").removeChild(removeArticle);
-
-    articleCopy.splice(e.target.id, 1);
-    localStorage.setItem("article", JSON.stringify(article_object_copy));
-
-    location.reload();
-  }
-
-  // button.addEventListener("click", deleteArticle);
+  let button = document.createElement("button");
 
   title.innerHTML = articleCopy[i].title;
   tStamp.innerHTML = articleCopy[i].time;
   body.innerHTML = articleCopy[i].body;
-  // imp.setAttribute("id", "article" + i);
-  document.getElementsByClassName("stream")[0].appendChild(imp);
+  document.getElementsByClassName("stream")[0].appendChild(impNode);
 }
+
+function clear() {
+  if(!window.localStorage.length) {
+    alert("Local storage is empty.");
+  }
+  localStorage.clear();
+  var vlu = document.getElementsByClassName('q');
+  for (var i = 0; i < vlu.length; i++){
+    vlu[i].value = '';
+  }

@@ -69,7 +69,7 @@
 
         </div>
         <div class="centercolumn">
-          <div class="cardlong">
+          <div class="cardlong" id="cardlong">
             <div id="stream" class="stream">
               <div class="articleTitle">
                 <h1 id="articleNotif" class="articleNotif">
@@ -80,6 +80,7 @@
               </div>
               <template id="template">
                 <div class="bodyContainer" id="bodyContainer">
+                  <div class="newArt">
                   <article class="article" id="article">
                     <h1 class="title" id="title"></h1>
                     <time id="tStamp" class="tStamp">Created on: </time>
@@ -91,11 +92,15 @@
                       <label class="field">
                         <textarea name="message" placeholder="Write a comment&hellip;"></textarea>
                       </label>
+                      <br><br>
                       <div class="actions">
                         <button type="submit">Post</button>
+                       <button type="submit"> <i class="fas fa-trash-alt"></i></button> 
+                        <button type="submit"><i class="fas fa-edit"></i></button>
                       </div>
                     </form>
                   </article>
+                </div>
                 </div>
               </template>
               </div>

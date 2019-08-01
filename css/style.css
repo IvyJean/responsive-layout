@@ -257,11 +257,20 @@ ul#horizontal-list li {
   font-size: 13px;
 }
 
-.article {
+.newArt {
   background-color: whitesmoke;
-  padding: 1rem;
+  padding: 0.9rem;
 }
 
+.icons {
+  float: right;
+  position: relative;
+}
+
+.article {
+  background-color: white;
+  padding: 1rem;
+}
 .field > .label::after {
 	content: ' ';
 	display: block;
@@ -269,7 +278,12 @@ ul#horizontal-list li {
 }
 
 .field > input {
-	width: 100%;
+  font: inherit;
+	color: inherit;
+	background-color: white;
+	border: 1px solid rgba(0,0,0,0.125);
+	min-height: 3rem;
+	border-radius: 4px;
 }
 
 .field > textarea {
