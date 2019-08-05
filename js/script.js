@@ -1,96 +1,56 @@
 
-var article_object = JSON.parse(localStorage.getItem("article"));
+let article = JSON.parse(localStorage.getItem("article"));
+// let articleCopy = article.slice(0).reverse();
+let articleCopy = article.slice(0);
+let temp = document.querySelector("#template");
+let cont = temp.content.querySelector("#bodyContainer");
+let i;
 
-var article_object_copy = article_object.slice(0).reverse();
+for (i = 0; i < articleCopy.length; i++) {
+  let impNode = document.importNode(cont, true);
 
-var temp = document.querySelector("#template");
-var item = temp.content.querySelector("#bodyContainer");
+  let contain = impNode.querySelector("#article");
+  let title = contain.querySelector("#title");
+  let tStamp = contain.querySelector("#tStamp");
+  let body = contain.querySelector("#body");
+  let deleteBtn = contain.querySelector("#delete");
+  // let updateBtn = contain.querySelector("#update");
+  
 
-var i;
-for (i = 0; i < article_object_copy.length; i++) {
-  var imp = document.importNode(item, true);
 
-  var item2 = imp.querySelector("#article");
-  var title = item2.querySelector("#title");
-  var subtitle = item2.querySelector("#subtitle");
-  var body = item2.querySelector("#body");
-  var deleteButton = item2.querySelector("#delete");
+  let button1 = document.createElement("button");
+  button1.setAttribute("id", i);
+  button1.textContent = "Delete";
+  deleteBtn.appendChild(button1);
 
-  var button = document.createElement("button");
-  button.setAttribute("id", i);
-  button.textContent = "Delete Article";
-  deleteButton.appendChild(button);
+  button1.addEventListener("click", deleteArticle);
+  // button2.addEventListener("click", updateArticle);
 
-  function deleteArticle(e) {
-    var removeArticle = e.target.parentNode.parentNode.parentNode;
-    document.getElementById("stream").removeChild(removeArticle);
-
-    article_object_copy.splice(e.target.id, 1);
-    localStorage.setItem("article", JSON.stringify(article_object_copy));
-
-    location.reload();
+  function deleteArticle(e){
+    impNode.remove(impNode);
+    articleCopy.splice(e.target.id, 1);
+    localStorage.setItem("article", JSON.stringify(articleCopy));
+    console.log(articleCopy);
   }
 
-  button.addEventListener("click", deleteArticle);
+  // let button2 = document.createElement("button");
+  // button2.setAttribute("id", i);
+  // button2.textContent = "Update";
+  // updateBtn.appendChild(button2);
 
-  title.innerHTML = article_object_copy[i].title;
-  subtitle.innerHTML = article_object_copy[i].time;
-  body.innerHTML = article_object_copy[i].body;
-  // imp.setAttribute("id", "article" + i);
-  document.getElementsByClassName("stream")[0].appendChild(imp);
+  // function updateArticle(e){
+  //   let upTitle = document.createElement("input");
+  //   upTitle.value = article.title;
+  //   impNode.appendChild(upTitle);
+
+  //   let upContent = document.createElement("textarea");
+  //   upContent.textContent = article.body;
+  //   impNode.appendChild(upContent);
+  // }
+
+
+  title.innerHTML = articleCopy[i].title;
+  tStamp.innerHTML = articleCopy[i].time;
+  body.innerHTML = articleCopy[i].body;
+  document.getElementsByClassName("stream")[0].appendChild(impNode);
 }
-
-// function delete() {
-
-// }
-
-// let temp = document.getElementById("template");
-// let articlesTitle = document.getElementById("articleNotif");
-// let container = template.content.querySelector("article");
-// let title = container.querySelector("articleTitle");
-// let timestamp = container.querySelector("#articleTime");
-// let content = container.querySelector("#article-content");
-// let id = 0;
-// let articleList;
-
-
-// if (!!window.localStorage.getItem("articleList")) {
-//   articleList = JSON.parse(window.localStorage.getItem("articleList"));
-//   } else {
-//     articlesTitle.innerHTML = "<center>No Articles</center>";
-//     articleList = [];
-//   }
-//   showList();
-
-// function showList() {
-//   if (!!articleList.length) {
-//     getLastTaskId();
-//     for (var item in articleList) {
-//       var articles = articleList[item];
-//       displayList(articles);
-//       var imp = document.importNode(container, true);
-//       document.getElementById("main").appendChild(imp);
-//       console.log(articles);
-//     }
-//   }
-// }
-
-// function displayList(articles) {
-//   title.innerHTML = articles.title;
-//   timestamp.innerHTML = articles.timestamp;
-//   content.innerHTML = articles.content;
-//   btn_delete.setAttribute("id", articles.id);
-//   console.log("ID:", btn_delete.getAttribute("id"));
-// }
-
-// function removeTask(e) {
-//   console.log("Hello");
-// }
-
-// function getLastTaskId() {
-//   var lastArticle = articleList[articleList.length - 1];
-//   id = lastArticle.id + 1;
-//   console.log("LAST ID: ", id);
-// }
-
-
