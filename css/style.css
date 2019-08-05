@@ -27,21 +27,13 @@ ul{
   color:#ffffff;
 }
 
-.dark{
-  padding:15px;
-  background:#35424a;
-  color:#ffffff;
-  margin-top:10px;
-  margin-bottom:10px;
-}
-
 /* Header **/
 header{
   background: black;
   color:#ffffff;
   padding-top:50px;
   min-height:100px;
-  border-bottom:red 3px solid;
+  border-bottom:slategrey 5px solid;
 }
 
 header a{
@@ -100,7 +92,6 @@ header a:hover{
 
 .column {
 	flex: 1;
-	border: 1px solid gray;
 	margin: 2px;
 	padding: 10px;
 	/* &:first-child { margin-left: 0; }
@@ -108,9 +99,20 @@ header a:hover{
 	
 }
 
-footer {
-	padding: 0 15px;
+.columnfooter {
+  float: left;
+  width: 31%;
+  padding: 10px;
+  height: 30px; /* Should be removed. Only for demonstration */
 }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
 
 
 @media screen and (max-width: 980px) {
@@ -147,7 +149,7 @@ button {
 	color: inherit;
 	font: inherit;
 	cursor: pointer;
-	background-color: var(--card-background-color);
+	background-color: black;
 	border-color: transparent;
 	box-shadow:
 		0 2px 4px rgba(0,0,0,0.0625),
@@ -220,13 +222,31 @@ a:visited {
 	color: var(--brand-color);
 }
 
+ul {
+  list-style-type: none;
+}
+
+ul#horizontal-list li {
+  display: inline;
+  text-decoration: none;
+  width: 90%;
+}
+
+.cardlong1 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  /* box-shadow: 5px 5px lightgrey; */
+}
+
 .sidebar {
-	padding: 0 2rem;
-	box-sizing: border-box;
+	padding: 0 1rem;
+  box-sizing: border-box;
+  padding-top: 2rem;
 }
 
 .sidebar > .panel {
-	margin: 2rem 0;
+	margin: 1rem 0;
 }
 
 .nav {
@@ -391,13 +411,25 @@ form .actions {
 	width: 320px;
 }
 
-#footer {
+/* #footer {
 	border-top: 1px solid;
 	padding: 2rem 1rem 1rem;
 	background-color: var(--footer-background-color);
 	border-color: rgba(0,0,0,0.125);
 	color: var(--inverse-foreground-color);
+} */
+/* Footer */
+.footer {
+  padding-top: 30px;
+  padding-bottom: 140px;
+  text-align: center;
+  background-color: black;
+  margin-top: 20px;
+  color: white;
+  font-size: 12px;
+  bottom:0;
 }
+
 
 /* Media Queries */
 @media(max-width: 768px){
@@ -416,20 +448,6 @@ form .actions {
 
   header{
     padding-bottom:20px;
-  }
-
-  #showcase h1{
-    margin-top:40px;
-  }
-
-  #newsletter button, .quote button{
-    display:block;
-    width:100%;
-  }
-
-  #newsletter form input[type="email"], .quote input, .quote textarea{
-    width:100%;
-    margin-bottom:5px;
   }
 }
 
