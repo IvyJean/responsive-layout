@@ -68,8 +68,42 @@
           </aside>
           
           <div class="column">
-            <h2>2nd Content Area</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus cum praesentium dolor totam voluptatibus recusandae? Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum.</p>
+              <div class="cardlong" id="cardlong">
+                  <div id="stream" class="stream">
+                    <div class="articleTitle">
+                      <h1 id="articleNotif" class="articleNotif">
+                        <h2 style="text-align: center">List of Articles</h2>
+                      </h1>
+                      <hr>
+                      <br>
+                    </div>
+                    <template id="template">
+                      <div class="bodyContainer" id="bodyContainer">
+                        <div class="newArt">
+                        <article class="article" id="article">
+                          <h1 class="title" id="title"></h1>
+                          <time id="tStamp" class="tStamp">Created on: </time>
+                          <br>
+                          <p  style="text-align: justify" class="body-text" id="body"></p>
+                        
+                          <h3>Comments</h3>
+                          <form>
+                            <label class="field">
+                              <textarea name="message" placeholder="Write a comment&hellip;"></textarea>
+                            </label>
+                            <br><br>
+                            <div class="actions">
+                              <button type="submit">Post</button>
+                              <span id="delete"></span>
+                              <span id="update"></span>
+                            </div>
+                          </form>
+                        </article>
+                      </div>
+                      </div>
+                    </template>
+                    </div>
+                    </div>
           </div>
           
           <aside id="archive" class="sidebar">
