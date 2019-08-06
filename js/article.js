@@ -1,4 +1,3 @@
-
 const submit = document.querySelector("#submit");
 const titleEl = document.querySelector("#title");
 const bodyEl = document.querySelector("#body");
@@ -23,3 +22,4 @@ function article() {
 }
 
 submit.addEventListener("click", article);
+

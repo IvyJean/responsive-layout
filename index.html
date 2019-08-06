@@ -1,183 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet'>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    
-    <title>Chronos</title>
-  </head>
-  <body>
-
-		<header id="topbar">
-        <div id="branding">
-            <h1><span class="highlight">Chronos</span></h1>
-          </div>
-			<nav class="nav">
-            <a href="index.html">HOME</a>
-            <a href="addArticle.html">ARTICLE</a>
-            <a href="">ABOUT</a>
-			</nav>
-		</header>
-      
-      <div class="row">
-        <div class="leftcolumn">
-          <div class="cardlong">
-            <h3 >FEATURED ARTICLES</h3>
-            <hr> <!-- hr line  -->
-            <br>
-            <div class="post">
-              <div>
-                <!-- <a href="#"  title="thumb1"><img src="src/tn1.png" class="t1"></img></a> -->
-                <p>Sunt in culpa qui officia deserunt</p>
-               <p style="font-size: 12px; font-weight: bold;"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
-								July 17, 2019	10:00 AM
-							</time></p>
-              </div>
-            </div> 
-            <div class="post">
-              <div>
-                <!-- <a href="#"  title="thumb1"><img src="src/tn2.png" class="t1"></img></a> -->
-                <p>Sunt in culpa qui officia deserunt</p>
-                <p style="font-size: 12px; font-weight: bold;"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
-                  July 17, 2019	10:00 AM
-                </time></p>
-              </div>
-            </div>            
-            <div class="post">
-              <div>
-                <!-- <a href="#"  title="thumb1"><img src="src/tn3.png" class="t1"></img></a> -->
-                <p>Sunt in culpa qui officia deserunt</p>
-                <p style="font-size: 12px; font-weight: bold;"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
-                  July 17, 2019	10:00 AM
-                </time></p>
-              </div>
-            </div> 
-            <br>
-            <hr> <!-- hr line  -->
-            <h3>Categories</h3>
-            <p class="fo1">Technology</p>
-            <p class="fo1">Web Design</p>
-            <p class="fo1">Art Ideas</p>
-          </div>
-        
-
-
-        </div>
-        <div class="centercolumn">
-          <div class="cardlong" id="cardlong">
-            <div id="stream" class="stream">
-              <div class="articleTitle">
-                <h1 id="articleNotif" class="articleNotif">
-                  <h2 style="text-align: center">List of Articles</h2>
-                </h1>
-                <hr>
-                <br>
-              </div>
-              <template id="template">
-                <div class="bodyContainer" id="bodyContainer">
-                  <div class="newArt">
-                  <article class="article" id="article">
-                    <h1 class="title" id="title"></h1>
-                    <time id="tStamp" class="tStamp">Created on: </time>
-                    <br>
-                    <p  style="text-align: justify" class="body-text" id="body"></p>
-                    <div id=""></div>
-                    <h3>Comments</h3>
-                    <form>
-                      <label class="field">
-                        <textarea name="message" placeholder="Write a comment&hellip;"></textarea>
-                      </label>
-                      <br><br>
-                      <div class="actions">
-                        <button type="submit">Post</button>
-                       <button type="submit"> <i class="fas fa-trash-alt"></i></button> 
-                        <button type="submit"><i class="fas fa-edit"></i></button>
-                      </div>
-                    </form>
-                  </article>
-                </div>
-                </div>
-              </template>
-              </div>
-              </div>
-          <!-- <div class="card">
-            <div class="center">
-              <div class="pagination">
-                  <a href="#">&laquo;</a>
-                  <a href="#" class="active">1</a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
-                  <a href="#">4</a>
-                  <a href="#">5</a>
-                  <a href="#">6</a>
-                  <a href="#">&raquo;</a>
-                </div>
-              </div>
-          </div> -->
-        </div>
-        <div class="rightcolumn">
-          <div class="cardlong">
-                <div class="search">
-                   <input type="text" class="searchTerm" placeholder="Search..">
-                   <button type="submit" class="searchButton">
-                     <i class="fa fa-search"></i>
-                  </button>
-                </div>
-                <br>
-                <br>
-                <img src="src/cb.gif" alt="chocobo" width="100%">
-                <h1 class="center" style="font-family: Allura; font-size: 30px" >Hi my name is Ivy! </h1>
-                <p>Welcome to my blog. Sunt in culpa qui officia deseru mollit anim id est laborum.Sunt in culpa qui officia deseru mollit anim id est laborum  </p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed</p>
-                <br>
-                <hr>
-                <!-- <iframe width="100%" height="200" src="https://www.youtube.com/embed/-FlxM_0S2lA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-                <h3 style="font-family: Allura; font-size: 30px">Follow Me</h3>
-                <div>
-                    <ul id="horizontal-list" class="" width="100%">
-                        <li class="icon"><a href="#"  title="twitter"><img src="src/tlogo.png" height="50px"></a></li>
-                        <li class="icon"><a href="#"  title="facebook"><img src="src/flogo.png" height="50px"></a></li>
-                        <li class="icon"><a href="#"  title="instagram"><img src="src/ilogo.png" height="50px"></a></li>
-                        <li class="icon"><a href="#"  title="linkedin"><img src="src/inlogo.png" height="50px"></a></li>
-                    </ul>
-                </div> 
-                <!-- <p>Some text..</p> -->
-                <br>
-                <p class="center">Copyright © Ivy Cocharo. <br> 2019 All rights reserved.</p>
-          </div>
-
-        </div>
-      </div>
-      
-      <div class="footer">
-          <div class="row">
-              <div class="column" >
-                <h2 style="font-family: Allura; font-size: 30px">Follow Me</h2>
-                <a href="#"  title="twitter"><img src="src/tlogo.png" height="50px"></a>
-                <a href="#"  title="twitter"><img src="src/flogo.png" height="50px"></a>
-                <a href="#"  title="twitter"><img src="src/ilogo.png" height="50px"></a>
-                <a href="#"  title="twitter"><img src="src/inlogo.png" height="50px"></a>
-              </div>
-              <div class="column" >
-                <h2>Support</h2>
-                <a href="#"><p class="fo">Support Policy</p></a>
-                <a href="#"><p class="fo">For Designers</p></a>
-                <a href="#"><p class="fo">Support</p></a>
-
-              </div>
-              <div class="column" >
-                <h2>The Details</h2>
-                <a href="#"><p class="fo">FAQ</p></a>
-                <a href="#"><p class="fo">Disclaimer</p></a>
-                <a href="#"><p class="fo">Support Policy</p></a>
-              </div>
+    <title>Home | Chronos</title>
+</head>
+<body>
+        <header>
+          <div class="container">
+            <div id="branding">
+              <h1><span class="highlight">Chronos</span></h1>
             </div>
-      </div>    
-      <script src="js/script.js"></script>
-  </body>
+            <nav>
+              <ul>
+                <li class="current"><a href="index.html">Home</a></li>
+                <li><a href="addArticle.html">Article</a></li>
+                <li><a href="services.html">Services</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+    
+        <div class="content">
+        <section class="columns">
+          
+          <aside id="archive" class="sidebar">
+              <div class="cardlong">
+                  <h3 >FEATURED ARTICLES</h3>
+                  <hr> <!-- hr line  -->
+                  <br>
+                  <div class="post">
+                    <div>
+                      <!-- <a href="#"  title="thumb1"><img src="src/tn1.png" class="t1"></img></a> -->
+                      <p>Sunt in culpa qui officia deserunt</p>
+                     <p style="font-size: 12px; font-weight: bold;"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
+                      July 17, 2019	10:00 AM
+                    </time></p>
+                    </div>
+                  </div> 
+                  <div class="post">
+                    <div>
+                      <!-- <a href="#"  title="thumb1"><img src="src/tn2.png" class="t1"></img></a> -->
+                      <p>Sunt in culpa qui officia deserunt</p>
+                      <p style=" font-size: 12px; font-weight: bold;"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
+                        July 17, 2019	10:00 AM
+                      </time></p>
+                    </div>
+                  </div>            
+                  <div class="post">
+                    <div>
+                      <!-- <a href="#"  title="thumb1"><img src="src/tn3.png" class="t1"></img></a> -->
+                      <p>Sunt in culpa qui officia deserunt</p>
+                      <p style="font-size: 12px; font-weight: bold;"> <time	class="timestamp"	datetime="2019-07-18T10:00:00+0800" ></time>
+                        July 17, 2019	10:00 AM
+                      </time></p>
+                    </div>
+                  </div> 
+                  <br>
+                  <hr> <!-- hr line  -->
+                  <h3>Categories</h3>
+                  <p class="fo1">Technology</p>
+                  <p class="fo1">Web Design</p>
+                  <p class="fo1">Art Ideas</p>
+                </div>
+          </aside>
+          
+          <div class="column">
+              <div class="cardlong1" id="cardlong1">
+                  <div id="stream" class="stream">
+                    <div class="articleTitle">
+                      <h1 id="articleNotif" class="articleNotif">
+                        <h2 style="text-align: center">List of Articles</h2>
+                      </h1>
+                      <hr>
+                      <br>
+                    </div>
+                    <template id="template">
+                      <div class="bodyContainer" id="bodyContainer">
+                        <div class="newArt">
+                        <article class="article" id="article">
+                          <h1 class="title" id="title"></h1>
+                          <time id="tStamp" class="tStamp">Created on: </time>
+                          <br>
+                          <p  style="text-align: justify" class="body-text" id="body"></p>
+                        
+                          <h3>Comments</h3>
+                          <form>
+                            <label class="field">
+                              <textarea name="message" placeholder="Write a comment&hellip;"></textarea>
+                            </label>
+                            <br><br>
+                            <div class="actions">
+                              <button type="submit">Post</button>
+                              <span id="delete"></span>
+                              <span id="update"></span>
+                            </div>
+                          </form>
+                        </article>
+                      </div>
+                      </div>
+                    </template>
+                    </div>
+                    </div>
+          </div>
+          
+          <aside id="archive" class="sidebar">
+              <div class="cardlong">
+                  <div class="search">
+                     <input type="text" class="searchTerm" placeholder="Search..">
+                     <button type="submit" class="searchButton">
+                       <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                  <br>
+                  <br>
+                  <img src="src/cb.gif" alt="chocobo" width="100%">
+                  <h1 class="center" style="font-family: Allura; font-size: 20px" >Hi my name is Ivy! </h1>
+                  <p>Welcome to my blog. Sunt in culpa qui officia deseru mollit anim id est laborum.Sunt in culpa qui officia deseru mollit anim id est laborum  </p>
+                  <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed</p>
+                  <br>
+                  <hr>
+                  <!-- <iframe width="100%" height="200" src="https://www.youtube.com/embed/-FlxM_0S2lA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                  <!-- <p>Some text..</p> -->
+                  <br>
+                  <p class="center">Copyright © Ivy Cocharo. <br> 2019 All rights reserved.</p>
+            </div>
+          </aside>
+          
+        </section>
+        </div>
+        <!-- <section id="showcase">
+              <section id="main">
+                  <div class="container">
+                    <article id="main-col">
+                      <h1 class="page-title">About Us</h1>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et magna. Nam eget eros non orci consectetur congue at ac augue. Proin eget arcu in enim feugiat ultricies. Curabitur maximus metus nec metus pretium viverra at et orci. Integer hendrerit ante ut placerat cursus.
+                      </p>
+                      <p class="dark">
+            Aliquam eget pharetra diam. Nulla placerat lorem at turpis tempor, vel ultrices dui tincidunt. Proin quis egestas lorem. Mauris vehicula lectus odio, sit amet dictum justo feugiat a. Praesent id dictum lacus. Sed ullamcorper id erat ut dictum. Fusce porttitor lorem sapien, in aliquet sapien convallis et. Donec nec mauris nulla. Curabitur cursus semper odio, et hendrerit ante. Nunc at cursus ante. Maecenas gravida ligula ut efficitur suscipit. Nulla id turpis varius, pretium nunc sed, fermentum sem. Sed lacinia nunc non interdum pellentesque.
+                      </p>
+                    </article>
+            
+                    <aside id="sidebar">
+                      <div class="dark">
+                        <h3>What We Do</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et magna</p>
+                      </div>
+                    </aside>
+                  </div>
+                </section>
+        </section> -->
+    
+        <div class="footer">
+            <div class="row">
+                <div class="columnfooter" >
+                  <h2 style="font-family: Allura; font-size: 30px">Follow Me</h2>
+                  <a href="#"  title="twitter"><img src="src/tlogo.png" height="50px"></a>
+                  <a href="#"  title="twitter"><img src="src/flogo.png" height="50px"></a>
+                  <a href="#"  title="twitter"><img src="src/ilogo.png" height="50px"></a>
+                  <a href="#"  title="twitter"><img src="src/inlogo.png" height="50px"></a>
+                </div>
+                <div class="columnfooter" >
+                  <h2>Support</h2>
+                  <a href="#"><p class="fo">Support Policy</p></a>
+                  <a href="#"><p class="fo">For Designers</p></a>
+                  <a href="#"><p class="fo">Support</p></a>
+  
+                </div>
+                <div class="columnfooter" >
+                  <h2>The Details</h2>
+                  <a href="#"><p class="fo">FAQ</p></a>
+                  <a href="#"><p class="fo">Disclaimer</p></a>
+                  <a href="#"><p class="fo">Support Policy</p></a>
+                </div>
+              </div>
+        </div>    
+        <script src="js/script.js"></script>
+      </body>
 </html>
