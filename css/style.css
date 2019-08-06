@@ -94,9 +94,9 @@ body {
 	  flex: 1;
 	  margin: 2px;
 	  padding: 10px;
+	  background-color: rgb(245, 245, 245);
 	  /* &:first-child { margin-left: 0; }
 	  &:last-child { margin-right: 0; } */
-	  
   }
   
   .columnfooter {
@@ -232,7 +232,7 @@ body {
   }
   
   .cardlong1 {
-	background-color: white;
+	background-color: rgb(245, 245, 245);
 	padding: 20px;
 	border-radius: 8px;
 	/* box-shadow: 5px 5px lightgrey; */
@@ -274,13 +274,17 @@ body {
 	  margin-bottom: 1rem;
   }
   
+  .center {
+	  text-align: center;
+  }
+
   .article {
 	  box-sizing: border-box;
 	  border: 1px solid;
 	  margin: 2rem auto;
-	  padding: 1rem;
-	  width: 600px;
-	  background-color: whitesmoke;
+	  padding: 2rem;
+	  width: 650px;
+	  background-color: rgb(216, 217, 218);
 	  border-radius: 8px;
   
   }
