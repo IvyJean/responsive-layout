@@ -195,7 +195,7 @@ input:focus {
 textarea {
 	font: inherit;
 	color: inherit;
-	background-color: var(--input-background-color);
+	background-color: white;
 	border: 1px solid rgba(0,0,0,0.125);
 	padding: 0.7rem 1rem;
 	min-height: 3rem;
@@ -241,7 +241,7 @@ ul#horizontal-list li {
 
 .sidebar {
 	padding: 0 1rem;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   padding-top: 2rem;
 }
 
@@ -279,9 +279,9 @@ ul#horizontal-list li {
 	box-sizing: border-box;
 	border: 1px solid;
 	margin: 2rem auto;
-	padding: 2rem;
-	width: 540px;
-	background-color: var(--card-background-color);
+	padding: 1rem;
+	width: 600px;
+	background-color: whitesmoke;
 	border-radius: 8px;
 
 }
@@ -436,14 +436,15 @@ form .actions {
   header #branding,
   header nav,
   header nav li,
-  #newsletter h1,
-  #newsletter form,
-  #boxes .box,
-  article#main-col,
+  article.article,
   aside#sidebar{
     float:none;
     text-align:center;
     width:100%;
+  }
+
+  div.footer {
+	  
   }
 
   header{
