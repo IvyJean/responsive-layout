@@ -146,7 +146,7 @@ body {
 	  text-transform: uppercase;
 	  border-radius: 4px;
 	  border: 1px solid;
-	  color: inherit;
+	  color: white;
 	  font: inherit;
 	  cursor: pointer;
 	  background-color: black;
@@ -158,8 +158,8 @@ body {
   }
   
   button[type="submit"] {
-	  background-color: var(--brand-color);
-	  color: var(--inverse-foreground-color);
+	  background-color: black;
+	  color: white;
   }
   
   button:focus {
@@ -179,16 +179,15 @@ body {
   input {
 	  font: inherit;
 	  color: inherit;
-	  background-color: var(--input-background-color);
+	  background-color: white
 	  border: 1px solid rgba(0,0,0,0.125);
 	  padding: 0.9375rem 1rem;
 	  line-height: 1;
 	  box-sizing: border-box;
-	  border-radius: 4px;
   }
   
   input:focus {
-	  border-color: var(--focus-color);
+	  border-color: black;
 	  outline: none;
   }
   
