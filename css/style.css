@@ -98,18 +98,20 @@ header a:hover {
 	  &:last-child { margin-right: 0; } */
 }
 
-.columnfooter {
-  float: left;
-  width: 31%;
-  padding: 10px;
-  height: 30px;
+.columnfooters {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 5px 0;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.columnfooter {
+  flex: 1;
+  margin: 2px;
+  padding: 10px;
+  background-color: black;
 }
+
 
 /* Sidebar */
 
@@ -251,7 +253,7 @@ ul#horizontal-list li {
   margin: 2rem auto;
   padding: 2rem;
   width: 650px;
-  background-color: rgb(216, 217, 218);
+  background-color: rgb(243, 245, 247);
   border-radius: 8px;
 }
 
@@ -380,18 +382,11 @@ form .actions {
   width: 320px;
 }
 
-/* #footer {
-	  border-top: 1px solid;
-	  padding: 2rem 1rem 1rem;
-	  background-color: var(--footer-background-color);
-	  border-color: rgba(0,0,0,0.125);
-	  color: var(--inverse-foreground-color);
-  } */
 /* Footer */
 .footer {
-  padding-top: 30px;
-  padding-bottom: 140px;
+  padding-top: 1rem;
   text-align: center;
+  padding-bottom: 1rem;
   background-color: black;
   margin-top: 20px;
   color: white;
@@ -404,31 +399,30 @@ form .actions {
   header #branding,
   header nav,
   header nav li,
-  article.article,
+  article.article, 
+  .footer {
+    float: none;
+    text-align: center;
+    width: 100%;
+  }   
   aside#sidebar {
     float: none;
     text-align: center;
     width: 100%;
   }
 
-  @media screen and (max-width: 980px) {
-    .columns .column{
-      margin-bottom: 5px;
-      flex-basis: 60%;
-    }
-  }
+}
 
-  @media screen and (max-width: 680px) {
-    .columns .column {
-      flex-basis: 100%;
-      margin: 0 0 5px 0;
-    }
+@media screen and (max-width: 980px) {
+  .columns .column{
+    margin-bottom: 5px;
+    flex-basis: 60%;
   }
-  /* div.footer {
-		
-	} */
+}
 
-  header {
-    padding-bottom: 20px;
+@media screen and (max-width: 680px) {
+  .columns .column {
+    flex-basis: 100%;
+    margin: 0 0 5px 0;
   }
 }

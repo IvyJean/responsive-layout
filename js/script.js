@@ -1,5 +1,4 @@
 let article = JSON.parse(localStorage.getItem("article"));
-// let articleCopy = article.slice(0).reverse();
 let articleCopy = article.slice(0);
 let temp = document.querySelector("#template");
 let cont = temp.content.querySelector("#bodyContainer");
@@ -13,9 +12,6 @@ for (i = 0; i < articleCopy.length; i++) {
   let tStamp = contain.querySelector("#tStamp");
   let body = contain.querySelector("#body");
   let deleteBtn = contain.querySelector("#delete");
-  // let updateBtn = contain.querySelector("#update");
-  
-
 
   let button1 = document.createElement("button");
   button1.setAttribute("id", i);
@@ -23,30 +19,55 @@ for (i = 0; i < articleCopy.length; i++) {
   deleteBtn.appendChild(button1);
 
   button1.addEventListener("click", deleteArticle);
-  // button2.addEventListener("click", updateArticle);
 
-  function deleteArticle(e){
+  function deleteArticle(e) {
     impNode.remove(impNode);
     articleCopy.splice(e.target.id, 1);
     localStorage.setItem("article", JSON.stringify(articleCopy));
     console.log(articleCopy);
   }
 
-  // let button2 = document.createElement("button");
-  // button2.setAttribute("id", i);
-  // button2.textContent = "Update";
-  // updateBtn.appendChild(button2);
+  let upButton = document.createElement("button");
+  upButton.innerHTML = "Update";
+  impNode.appendChild(upButton);
+  upButton.setAttribute("id", i);
+  upButton.setAttribute("style", "center");
 
-  // function updateArticle(e){
-  //   let upTitle = document.createElement("input");
-  //   upTitle.value = article.title;
-  //   impNode.appendChild(upTitle);
+  upButton.addEventListener("click", updateArticle);
 
-  //   let upContent = document.createElement("textarea");
-  //   upContent.textContent = article.body;
-  //   impNode.appendChild(upContent);
-  // }
+  function updateArticle(e) {
+    upButton.disabled = true;
+    let titlenew = document.createElement("input");
+    titlenew.value = title.textContent;
+    titlenew.setAttribute("id", i);
+    titlenew.setAttribute("rows", "1");
+    titlenew.setAttribute("cols", "62");
+    let text = document.createElement("textarea");
+    text.value = body.textContent;
+    text.setAttribute("rows", "10");
+    text.setAttribute("cols", "62");
+    text.setAttribute("position", "center");
+    text.setAttribute("id", i);
+    let submit = document.createElement("button");
+    submit.innerHTML = "Save";
+    submit.setAttribute("id", i);
+    impNode.appendChild(submit);
+    impNode.appendChild(titlenew);
+    impNode.appendChild(text);
 
+    function postArticle(e) {
+      impNode.removeChild(text);
+      impNode.removeChild(titlenew);
+      impNode.removeChild(submit);
+      body.textContent = text.value;
+      title.textContent = titlenew.value;
+      upButton.disabled = false;
+      article[i].body = body.textContent;
+      article[i].title = title.textContent;
+      localStorage.setItem("article", JSON.stringify(article));
+    }
+    submit.addEventListener("click", postArticle);
+  }
 
   title.innerHTML = articleCopy[i].title;
   tStamp.innerHTML = articleCopy[i].time;
