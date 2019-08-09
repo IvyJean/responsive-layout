@@ -75,13 +75,6 @@ header a:hover {
 
 /* ------------ */
 
-.wrapper {
-  padding: 5px;
-  max-width: 960px;
-  width: 95%;
-  margin: 20px auto;
-}
-
 .columns {
   display: flex;
   flex-flow: row wrap;
@@ -224,27 +217,6 @@ ul#horizontal-list li {
 
 .nav a {
   margin: 0 1rem;
-}
-
-.footer-links {
-  width: 540px;
-  margin: 0 auto;
-  columns: 3;
-}
-
-.footer-links a {
-  text-decoration: none;
-}
-
-.footer-links a::after {
-  content: " ";
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.center {
-  text-align: center;
 }
 
 .article {
@@ -414,13 +386,15 @@ form .actions {
 }
 
 @media screen and (max-width: 980px) {
-  .columns .column{
+  .columns .column,
+  .columnfooter .columnfooters{
     margin-bottom: 5px;
     flex-basis: 60%;
   }
 }
 
 @media screen and (max-width: 680px) {
+  .columnfooter .columnfooters,
   .columns .column {
     flex-basis: 100%;
     margin: 0 0 5px 0;
