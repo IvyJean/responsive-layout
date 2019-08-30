@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdbreact';
 import axios from 'axios';
 // import { Redirect } from 'react-router';
+import { withRouter, Redirect } from 'react-router'
 // import jwt_decode from 'jwt-decode'
 
 
@@ -9,14 +10,13 @@ import styled from "styled-components";
 
 const Card = styled.div`
 border-radius: 8px;
-background-color: rgb(243, 245, 247);
 padding: 3rem;
 margin: 4rem;
 width: 500px;
 justify-content: center;
 margin-left: auto;
 margin-right: auto;
-border-bottom: 5px solid slategrey;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 `;
 
 const Button = styled.button`
@@ -31,7 +31,7 @@ const Button = styled.button`
   background-color: black;
   border-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0625), 0 0 2px rgba(0, 0, 0, 0.0625);
-`;
+  `;
 
 class Login extends Component {
     constructor(props) {
@@ -40,26 +40,11 @@ class Login extends Component {
             email: '',
             password: '',
             user: '',
+            isLogin: false,
         }
         this.onChange = this.onChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
-
-    // handleClick (e) {
-    //     e.preventDefault();
-    //     const { email, password } = this.state;
-    //     const userData = { email, password };
-
-    //     axios
-    //     .post('https://wc-training.johnerisvillanueva.com/api/auth/login', userData)
-    //     .then((response) => {   
-    //        if(response.data.error === undefined) {
-    //           this.setState({isLogin: true, user: response.data.user});
-    //        }
-    //        return response;
-    //     })
-    //  }
-
 
     handleClick(e) {
         e.preventDefault();
@@ -69,35 +54,16 @@ class Login extends Component {
         axios
             .post('https://wc-training.johnerisvillanueva.com/api/auth/login', userData)
             .then((response) => {
-                const { token } = response.data;
-                localStorage.setItem("token", token);
+                const { access_token } = response.data;
+                localStorage.setItem("token", access_token);
+                // this.props.requireUser(access_token);
                 this.props.history.push('/Home');
+                window.location.reload(true);
             })
             .catch((error) => {
                 console.log(error);
             });
     }
-
-    // axios({
-    //     method: 'post',
-    //     url: 'https://wc-training.johnerisvillanueva.com/api/auth/login',
-    //     data: {
-    //         email: this.state.email,
-    //         password: this.state.password
-    //     }
-    // }).then(
-    //     res => console.log(res),
-    //     console.log("Login Successful!")
-    //     res => {
-    //         if (res.status === 200){
-    //             this.setState({ isLogin: true });
-    //         }
-
-    // ).catch(error => {
-    //     console.log(error)
-    //     console.log("Login Failed!")
-    // });
-    // }
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -105,8 +71,8 @@ class Login extends Component {
     }
 
     render() {
-        // if(this.state.isLogin){
-        //     return <Redirect to={{ pathname: "/Home"}} />
+        // if (this.state.isLogin) {
+        //     return <Redirect to={{ pathname: "/Home" }} />
         // }
         return (
 
@@ -123,7 +89,6 @@ class Login extends Component {
                                         label="Type your email"
                                         icon="envelope"
                                         group type="email"
-                                        // value={this.state.email}
                                         onChange={this.onChange}
                                     />
                                     <MDBInput
@@ -132,7 +97,6 @@ class Login extends Component {
                                         label="Type your password"
                                         icon="lock"
                                         group type="password"
-                                        // value={this.state.password}
                                         onChange={this.onChange}
                                     />
                                 </div>
@@ -148,4 +112,4 @@ class Login extends Component {
     };
 }
 
-export default Login;
+export default withRouter(Login);

@@ -76,6 +76,7 @@ width: 500px;
 justify-content: center;
 margin-left: auto;
 margin-right: auto;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0625), 0 0 2px rgba(0, 0, 0, 0.0625);
 `;
 
 
@@ -88,18 +89,11 @@ class AddArticle extends Component {
           title: '',
           body: '',
           article: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
-          modal: false,
         };
       this.newTitle = this.newTitle.bind(this);
       this.newBody = this.newBody.bind(this);
       this.createArticle = this.createArticle.bind(this);
     }
-
-    toggle = () => {
-      this.setState({
-        modal: !this.state.modal
-      });
-    }    
 
     newTitle(e){
       this.setState({
@@ -181,32 +175,6 @@ class AddArticle extends Component {
                 </form>
               </Card>
             </Col>
-            {/* <Col md="7" className="column1">
-              <div className="cardlong1" id="cardlong1">
-                <article className="article">
-                  <div>
-                    <label className="field">
-                      <p align="center" className="">
-                        Create new Article
-                                  </p>
-                    </label>
-                    <form onSubmit={this.createArticle}>
-                      <input id="title" onChange={this.newTitle} className="title" placeholder="" />
-                     <br/><br/>
-                      <textarea id="body" onChange={this.newBody} className="body"
-                        placeholder="Content"></textarea>
-
-                      <div className="actions">
-                        <button type="submit" className="submit-button" id="submit">
-                          Post
-                       </button>
-                      </div>
-                    </form>
-                  </div>
-                </article>
-
-              </div>
-            </Col> */}
             <Col md="2" className="column">
               <input
                 className="form-control mr-sm-2"

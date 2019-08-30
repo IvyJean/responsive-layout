@@ -1,84 +1,81 @@
 import React, { Component } from 'react';
+import { MDBIcon, MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import styled from "styled-components";
-// import {Row} from 'mdbreact'
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
-const Fragment = styled.footer`
-    padding-bottom: 130px;
-    text-align: center;
-    background-color: black;
-    margin-top: 20px;
+const A = styled.div`
+  a {
+    color: #222;
+    transition: all 0.6s;
     color: white;
-    font-size: 12px;
-    bottom: 0;
-`;
-
-const Container = styled.div`
-  align-items: center;
-
-  .columns {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    margin: 5px 0;
+    font-size: 1em;
   }
-
-  p {
-    font-size: 14px;
-  }
-
-  .articlenew {
-    font-weight: bold;
-    font-size: 16px
-  }
-
-  .column {
-    flex: 1;
-    margin: 2px;
-    text-align: center;
-    padding: 0 1rem;
-    padding-top: 1rem;
-
-    time {
-      font-size: 12px;
-      color: gray;
-    }
-  }
-
-  .column1 {
-    text-align: center;
-    background-color: rgb(243, 245, 247);
-    border-radius: 8px;
-    flex: 1;
+  a:hover {
+    opacity: 0.55;
   }
 `;
 
 class Footer extends Component {
 
-    render() {
-        return (
-            <div>
-                <Fragment>
-                    <Container>
-                        <Row>
-                        <Col md="2" className="column">
-                            <p>Col 1</p>
-                        </Col>
-                        <Col md="7" className="column">
-                        <p>Col 1</p>
-                        </Col>
-                        <Col md="2" className="column">
-                        <p>Col 1</p>
-                        </Col>
-                        </Row>
-                    </Container>
-                </Fragment>
-            </div>
-            )
-        };
-      
-    }
-    
-    
-    export default Footer;
+  render() {
+    return (
+      <MDBFooter color="black" className="font-small pt-4 mt-4">
+        <br />
+        <MDBContainer fluid className="text-center text-md-center">
+          <MDBRow>
+            <MDBCol md="6">
+              <h5 className="title">Details</h5>
+              <A>
+                <ul>
+                  <a href="#!" className="fb-ic mr-3">
+                    FAQ
+                  </a>
+                  <a href="#!" className="fb-ic mr-3">
+                    Disclaimer
+                  </a>
+                  <a href="#!" className="fb-ic mr-3">
+                    Support Policy
+                  </a>
+                </ul>
+              </A>
+              <br />
+            </MDBCol>
+            <MDBCol md="5">
+              <h5 className="title">Follow Me</h5>
+              <A>
+                <MDBContainer>
+                  <a href="#!" className="fb-ic mr-3">
+                    <MDBIcon fab icon="facebook-f" />
+                  </a>
+                  <a href="#!" className="tw-ic mr-3">
+                    <MDBIcon fab icon="twitter" />
+                  </a>
+                  <a href="#!" className="li-ic mr-3">
+                    <MDBIcon fab icon="linkedin-in" />
+                  </a>
+                  <a href="#!" className="ins-ic mr-3">
+                    <MDBIcon fab icon="instagram" />
+                  </a>
+                  <a href="#!" className="pin-ic mr-3">
+                    <MDBIcon fab icon="pinterest" />
+                  </a>
+                  <a href="#!" className="git-ic mr-3">
+                    <MDBIcon fab icon="github" />
+                  </a>
+                  <a href="#!" className="dribbble-ic mr-3">
+                    <MDBIcon fab icon="dribbble" />
+                  </a>
+                </MDBContainer>
+              </A>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+        <br />
+      </MDBFooter>
+
+    )
+  };
+
+}
+
+
+export default Footer;

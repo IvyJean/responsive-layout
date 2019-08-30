@@ -24,19 +24,10 @@ const Container = styled.div`
     font-size: 14px;
   }
 
-  .field > .label::after {
-    content: " ";
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .field > input {
-    width: 100%;
-  }
-  
-  .field > textarea {
-    width: 100%;
-    box-sizing: border-box;
+  .comments{
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .message{
@@ -49,6 +40,7 @@ const Container = styled.div`
     line-height: 1.5;
     border-radius: 4px;
     resize: vertical;
+    width: 300px%;
   }
 
   .message:focus {
@@ -62,6 +54,10 @@ const Container = styled.div`
 
   .tStamp {
     text-align: left;
+    font-size: 12px;
+  }
+  .body-text{
+    font-size: 16px;
   }
 
   .articlenew {
@@ -114,6 +110,14 @@ width: 500px;
 justify-content: center;
 margin-left: auto;
 margin-right: auto;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+
+@media screen (max-width: 600px) {
+  float: none;
+  text-align: center;
+  width: 100%;
+}
 `;
 
 class Home extends Component {
@@ -129,7 +133,7 @@ class Home extends Component {
       newArticleList: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
     };
     this.handleDeleteArticle = this.handleDeleteArticle.bind(this);
-    // this.editArticle = this.editArticle.bind(this);
+    // this.handleEditArticle = this.handleEditArticle.bind(this);
   }
 
 
@@ -146,9 +150,9 @@ class Home extends Component {
 
 
 
-//   handleEditArticle(e){
+//   handleEditArticle(i){
 //     let data = this.state.articleList;
-
+//     // data[i].done = true;
 //     this.setState((prevState) => {
 //       localStorage.setItem('article', JSON.stringify(prevState.data + 1));
 //       return{
@@ -206,7 +210,7 @@ class Home extends Component {
                   {/* <Button type="submit" onClick={this.editArticle.bind(this, article)}>Edit</Button> */}
                   {/* <Button type="submit" onClick={this.handleEditArticle.bind(this, article)}>Edit</Button> */}
                   <hr />
-                  <h4>Comments</h4>
+                  <p className="comments">Comments</p>
                   <form>
                     <label className="field">
                       <textarea className="message" placeholder="Write a comment&hellip;"></textarea>

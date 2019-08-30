@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
 const Navigation = styled.header`
-  border-bottom: 5px solid slategrey;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   z-index: 1;
   display: flex;
   justify-content: space-between;
@@ -94,7 +94,9 @@ const Navigation = styled.header`
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      isAuthenticated: false,
+    }
   }
 
   UNSAFE_componentWillMount() {
@@ -106,35 +108,71 @@ class Header extends Component {
     }
   }
 
+
   logout = () => {
     localStorage.removeItem("token");
-    localStorage.clear();
-    window.location.reload();
+    // localStorage.clear();
+    window.location.reload(true);
   }
 
   render() {
-    return (
-      <Navigation>
-        <div className="logo">
-          <Link to="/Home">
-            <p>Chronos</p>
-          </Link>
-        </div>
-        <nav className="nav">
-          <Link className="active" to="/Home"><p>home</p></Link>
-          <Link className="active" to="/AddArticle"><p>Article</p></Link>
-          <p> | </p>
-          {this.state.isAuthenticated === true ?
+    console.log(localStorage.getItem('token'));
+    if (this.state.isAuthenticated === true) {
+      return (
+        <Navigation>
+          <div className="logo">
+            <Link to="/Home">
+              <p>Chronos</p>
+            </Link>
+          </div>
+          <nav className="nav">
+            <Link className="active" to="/Home"><p>home</p></Link>
+            <Link className="active" to="/AddArticle"><p>Article</p></Link>
+            <p> | </p>
             <Link className="active" onClick={this.logout} to="/"><p>Log Out</p></Link>
-            :
+          </nav>
+        </Navigation>
+      );
+    } else {
+      return (
+        <Navigation>
+          <div className="logo">
+            <Link to="/Home">
+              <p>Chronos</p>
+            </Link>
+          </div>
+          <nav className="nav">
+            <Link className="active" to="/Home"><p>home</p></Link>
+            <Link className="active" to="/AddArticle"><p>Article</p></Link>
+            <p> | </p>
             <Link className="active" to="/"><p>Login</p></Link>
-          }
-          {this.state.isAuthenticated === false ?
             <Link className="active" to="/Register"><p>Register</p></Link>
-            : null}
-        </nav>
-      </Navigation>
-    );
+          </nav>
+        </Navigation>
+      );
+    }
+    // return (
+    //   <Navigation>
+    //     <div className="logo">
+    //       <Link to="/Home">
+    //         <p>Chronos</p>
+    //       </Link>
+    //     </div>
+    //     <nav className="nav">
+    //       <Link className="active" to="/Home"><p>home</p></Link>
+    //       <Link className="active" to="/AddArticle"><p>Article</p></Link>
+    //       <p> | </p>
+    //       {localStorage.getItem('token') ?
+    //         <Link className="active" onClick={this.logout} to="/"><p>Log Out</p></Link>
+    //         :
+    //         <Fragment>
+    //           <Link className="active" to="/"><p>Login</p></Link>
+    //           <Link className="active" to="/Register"><p>Register</p></Link>
+    //         </Fragment>
+    //       }
+    //     </nav>
+    //   </Navigation>
+    // );
   }
 }
 

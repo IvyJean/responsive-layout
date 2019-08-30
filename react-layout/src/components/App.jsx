@@ -30,20 +30,22 @@ class App extends Component {
     console.log('userData', userData);
     if (userData) {
       this.setState({
-        isAuthenticated: true,
+        userData: userData
       })
     }
   }
 
   render() {
+    const { userData } = this.state;
+    console.log(userData);
     return (
       <Router>
         <div>
           <Header />
           <Switch>
-            <Route exact={true} path="/" component={Login}
-              render={() => {
-                return <Login requireUser={this.requireUser} />
+            <Route exact={true} path="/"
+              render={(props) => {
+                return <Login requireUser={this.requireUser.bind(this)} {...props} />
               }} />
             <Route exact path="/Register" component={Register}
               render={() => (
@@ -51,10 +53,9 @@ class App extends Component {
               )}
             />
 
-            <PrivateRoute path='/Home' component={Home} auth={localStorage.getItem("token")} />
-            <PrivateRoute path='/AddArticle' component={AddArticle} auth={localStorage.getItem("token")} />
+            <PrivateRoute path='/Home' component={Home} />
+            <PrivateRoute path='/AddArticle' component={AddArticle} />
 
-            <Route path="*" component={() => <Login />} />
 
           </Switch>
           <Footer />

@@ -5,14 +5,13 @@ import styled from "styled-components";
 
 const Card = styled.div`
 border-radius: 8px;
-background-color: rgb(243, 245, 247);
 padding: 3rem;
 margin: 4rem;
-width: 500px;
+width: 450px;
 justify-content: center;
 margin-left: auto;
 margin-right: auto;
-border-bottom: 5px solid slategrey;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 `;
 
 const Button = styled.button`
