@@ -88,6 +88,8 @@ class AddArticle extends Component {
           id: '',
           title: '',
           body: '',
+          currentTitle: '',
+          currentBody: '',
           article: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
         };
       this.newTitle = this.newTitle.bind(this);
@@ -124,7 +126,7 @@ class AddArticle extends Component {
       };
       articleList.push(newArticle);
       localStorage.setItem('article', JSON.stringify(articleList));
-      window.location.reload(true); //automatic reload screen
+      // window.location.reload(true); //automatic reload screen
     }
 
   render() {
@@ -168,8 +170,21 @@ class AddArticle extends Component {
               <Card>
                <p className="articlenew">Create new article</p>
                 <form onSubmit={this.createArticle}>
-                  <MDBInput id="title" onChange={this.newTitle} className="title" label="Title" size="lg" />
-                  <MDBInput id="body" onChange={this.newBody} className="body" type="textarea" label="Content" rows="5" />
+                  <MDBInput 
+                    id="title" 
+                    onChange={this.newTitle} 
+                    value={this.state.currentTitle}
+                    className="title" 
+                    label="Title" 
+                    size="lg" />
+                  <MDBInput 
+                     id="body"
+                     onChange={this.newBody} 
+                     value={this.state.currentBody}
+                     className="body" 
+                     type="textarea" 
+                     label="Content" 
+                     rows="5" />
                   <Button type="submit">Post</Button>
 
                 </form>
