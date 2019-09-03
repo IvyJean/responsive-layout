@@ -36,8 +36,8 @@ class App extends Component {
   }
 
   render() {
-    const { userData } = this.state;
-    console.log(userData);
+    // const { userData } = this.state;
+    // console.log(userData);
     return (
       <Router>
         <div>

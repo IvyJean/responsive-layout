@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdbreact';
 import axios from 'axios';
-import { withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -34,7 +34,7 @@ class Register extends Component {
         super(props);
         this.state = {
             name: '',
-            email:'',
+            email: '',
             password: '',
             passwordConfirm: ''
         }
@@ -49,15 +49,10 @@ class Register extends Component {
 
         axios
             .post('https://wc-training.johnerisvillanueva.com/api/auth/signup', userData)
-            .then((response) => {
-                const { access_token } = response.data;
-                localStorage.setItem("token", access_token);
-                // this.props.requireUser(access_token);
-                this.props.history.push('/Login');
-                window.location.reload(true);
-            })
-            .catch((error) => {
-                console.log(error);
+            .then(
+                res => console.log(res)
+            ).catch(error => {
+                console.log(error)
             });
     }
 
@@ -78,7 +73,7 @@ class Register extends Component {
                                     <MDBInput
                                         label="Your name"
                                         icon="user"
-                                        name= "name"
+                                        name="name"
                                         group
                                         type="text"
                                         onChange={this.onChange}

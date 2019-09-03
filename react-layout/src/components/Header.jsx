@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -111,12 +111,11 @@ class Header extends Component {
 
   logout = () => {
     localStorage.removeItem("token");
-    // localStorage.clear();
     window.location.reload(true);
   }
 
   render() {
-    console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
     if (this.state.isAuthenticated === true) {
       return (
         <Navigation>

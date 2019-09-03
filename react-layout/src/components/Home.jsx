@@ -4,7 +4,7 @@ import React, { Component, Fragment } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import {Button, Modal, Form} from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -131,22 +131,17 @@ class Home extends Component {
       id: '',
       title: '',
       body: '',
+      time: '',
       articleList: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
       // newArticleList: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
-      noteEditing: null,
-      currentEdit: "",
       show: false,
     };
     this.handleDeleteArticle = this.handleDeleteArticle.bind(this);
-    // this.setNoteEditing = this.setNoteEditing.bind(this);
 
-    // this.handleEditArticle = this.handleEditArticle.bind(this);
-    // this.onChange = this.onChange.bind(this);
-
-     // Edit Modal
-     this.handleShow = this.handleShow.bind(this);
-     this.handleClose = this.handleClose.bind(this);
-     this.handleEdit = this.handleEdit.bind(this);
+    // Edit Modal
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   handleDeleteArticle = indexToDelete => {
@@ -157,75 +152,41 @@ class Home extends Component {
     localStorage.setItem('article', JSON.stringify(newArticleList));
   };
 
-  // onEditSubmit(id, title, body){
-  //   let newArticleList =  [...this.state.articleList];
+  handleEdit(event) {
+    event.preventDefault();
+    this.setState({ show: false });
+    let data = [...this.state.articleList];
 
-  //   newArticleList = newArticleList.map(article => {
-  //     if(article.id === id){
-  //         article.title = title
-  //         article.body = body
-  //     }
+    data = data.map((value) => {
+      // check if this is the value to be edited
+      if (value.title === this.props.title && value.body === this.props.body) {
+        // return the updated value 
+        return {
+          ...value,
+          title: this.state.title,
+          body: this.state.body
+        }
+      }
+      // otherwise return the original value without editing
+      return value;
+    })
+   
+    localStorage.setItem('article', JSON.stringify(data));
+    this.setState({articleList : data});
+  }
 
-  //     return article
-  //   })
-
-  //   this.setState({articleList: newArticleList});
-  //       localStorage.setItem('article', JSON.stringify(newArticleList));
-  // }
-
-  setNoteEditing = index => {
-    let newArticleList = [...this.state.articleList];
-
-    this.setState({ noteEditing: index});
+  onChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   };
 
-  // editNote = event => {
-  //   this.setState({ currentEdit: event.target.value });
-  // };
-
-  // newTitle(e){
-  //   this.setState({
-  //     newTitle: e.target.value,
-  //   });
-  // }
-
-  // newBody(e) {
-  //   this.setState({
-  //     newBody: e.target.value,
-  //   });
-  // }
-
-  onChange(event){
-    this.setState({
-        [event.target.name]: event.target.value
-    })
-};
-
-handleClose(){
-  this.setState({show: false});
-}
-handleShow(){
-  this.setState({show: true});
-}
-
-  // handleEditArticle = id => {
-  //   let article = localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [];
-
-  //   for (let i = 0; i < article.length; i++) {
-  //     if (article[i].id === id) {
-
-  //      const  articleLists = {
-  //         id: article[i].id,
-  //         title: article[i].title,
-  //         body: article[i].body,
-  //         time: new Date().toLocaleString()
-  //       };
-  //       localStorage.setItem('article', JSON.stringify(articleLists));
-  //     }
-  //   }
-  // };
-
-    
+  handleClose() {
+    this.setState({ show: false });
+  }
+  handleShow() {
+    this.setState({ show: true });
+  }
 
   render() {
     const list = this.state.articleList;
@@ -268,32 +229,48 @@ handleShow(){
             <Col md="7" className="column1">
               {list.map((article, index) => (
                 <Card key={index}>
-                  {this.state.noteEditing === null ||
-                    this.state.noteEditing !== index ? (
-                      <Fragment>
-                        <h1 className="title" id="title">{article.title}</h1>
-                        <p id="tStamp" className="tStamp">Created: {article.time}</p>
-                        <p className="body-text" id="body">{article.body}</p>
-                        <Btn onClick={() => this.handleDeleteArticle(index)}><MDBIcon icon="trash-alt" /></Btn>
-                        <Btn onClick={() => this.setNoteEditing(index)}>  <MDBIcon icon="edit" /></Btn>
-                      </Fragment>
-                    ) : (
-                      <Fragment>
-                        <input
-                          type="text"
-                          value={this.state.title}
-                          name= "title"
-                          onChange = {event => this.onChange(event)} /> <br /><br />
-                        <textarea
-                          className="body-text"
-                          id="body"
-                          name="body"
-                          value={this.state.body}
-                          onChange = {event => this.onChange(event)} /> <br /><br />
-                        <Btn onClick={() => this.handleEditArticle(index.id)}>Done</Btn>
-                        <Btn onClick={() => this.handleDeleteArticle(index)}><MDBIcon icon="trash-alt" /></Btn>
-                      </Fragment>
-                    )}
+                  <Fragment>
+                    <h1 className="title" id="title">{article.title}</h1>
+                    <p id="tStamp" className="tStamp">Created: {article.time}</p>
+                    <p className="body-text" id="body">{article.body}</p>
+                    <Btn onClick={() => this.handleDeleteArticle(index)}><MDBIcon icon="trash-alt" /></Btn>
+                    <Btn onClick={this.handleShow}>  <MDBIcon icon="edit" /></Btn>
+                  </Fragment>
+                  <Modal show={this.state.show} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Edit Form</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Form>
+                        <Form.Group controlId="formBasicTitle">
+                          <Form.Label>TItle</Form.Label>
+                          <Form.Control
+                            autoComplete="title" required
+                            name="title"
+                            type="text"
+                            placeholder="Enter title"
+                            value={this.state.title}
+                            onChange={event => this.onChange(event)}
+                          />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicBody">
+                          <Form.Label>Body</Form.Label>
+                          <Form.Control as="textarea" rows="3" 
+                            autoComplete="body" required
+                            name="body"
+                            type="text"
+                            placeholder="Enter body"
+                            value={this.state.body}
+                            onChange={event => this.onChange(event)}
+                          />
+                        </Form.Group>
+                      </Form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Btn onClick={this.handleClose}>Close</Btn>
+                      <Btn onClick={this.handleEdit}>Save Changes</Btn>
+                    </Modal.Footer>
+                  </Modal>
                   <hr />
                   <p className="comments">Comments</p>
                   <form>
@@ -316,7 +293,7 @@ handleShow(){
                 placeholder="Search"
                 aria-label="Search"
               /><br />
-              <Button>Search</Button>
+              <Btn>Search</Btn>
               <hr />
               <br />
               {/* <img src="../components/img/cb.gif" alt="chocobo" width="100%"/> */}
