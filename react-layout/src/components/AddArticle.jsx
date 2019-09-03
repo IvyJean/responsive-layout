@@ -88,8 +88,6 @@ class AddArticle extends Component {
           id: '',
           title: '',
           body: '',
-          currentTitle: '',
-          currentBody: '',
           article: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
         };
       this.newTitle = this.newTitle.bind(this);
@@ -126,7 +124,7 @@ class AddArticle extends Component {
       };
       articleList.push(newArticle);
       localStorage.setItem('article', JSON.stringify(articleList));
-      // window.location.reload(true); //automatic reload screen
+      window.location.reload(true); //automatic reload screen
     }
 
   render() {
@@ -173,14 +171,14 @@ class AddArticle extends Component {
                   <MDBInput 
                     id="title" 
                     onChange={this.newTitle} 
-                    value={this.state.currentTitle}
+                    // value={this.state.currentTitle}
                     className="title" 
                     label="Title" 
                     size="lg" />
                   <MDBInput 
                      id="body"
                      onChange={this.newBody} 
-                     value={this.state.currentBody}
+                    //  value={this.state.currentBody}
                      className="body" 
                      type="textarea" 
                      label="Content" 

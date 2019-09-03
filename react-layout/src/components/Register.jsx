@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdbreact';
-
+import axios from 'axios';
+import { withRouter} from 'react-router';
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -31,8 +32,40 @@ const Button = styled.button`
 class Register extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            name: '',
+            email:'',
+            password: '',
+            passwordConfirm: ''
+        }
+        this.onChange = this.onChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
+
+    handleClick(e) {
+        e.preventDefault();
+        const { name, email, password, passwordConfirm } = this.state;
+        const userData = { name, email, password, passwordConfirm };
+
+        axios
+            .post('https://wc-training.johnerisvillanueva.com/api/auth/signup', userData)
+            .then((response) => {
+                const { access_token } = response.data;
+                localStorage.setItem("token", access_token);
+                // this.props.requireUser(access_token);
+                this.props.history.push('/Login');
+                window.location.reload(true);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+        // console.log(this.state);
+    }
+
     render() {
         return (
             <Card>
@@ -45,35 +78,39 @@ class Register extends Component {
                                     <MDBInput
                                         label="Your name"
                                         icon="user"
+                                        name= "name"
                                         group
                                         type="text"
-
+                                        onChange={this.onChange}
                                     />
                                     <MDBInput
                                         label="Your email"
                                         icon="envelope"
+                                        name="email"
                                         group
                                         type="email"
-
+                                        onChange={this.onChange}
                                     />
                                     <MDBInput
                                         label="Your password"
                                         icon="lock"
+                                        name="password"
                                         group
                                         type="password"
-
+                                        onChange={this.onChange}
                                     />
                                     <MDBInput
                                         label="Confirm your password"
                                         icon="exclamation-triangle"
+                                        name="passwordConfirm"
                                         group
-                                        type="text"
-
+                                        type="password"
+                                        onChange={this.onChange}
                                     />
 
                                 </div>
                                 <div className="text-center">
-                                    <Button color="primary">Register</Button>
+                                    <Button onClick={this.handleClick}>Register</Button>
                                 </div>
                             </form>
                         </MDBCol>
@@ -84,4 +121,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default withRouter(Register);

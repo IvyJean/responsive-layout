@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdbreact';
 import axios from 'axios';
 // import { Redirect } from 'react-router';
-import { withRouter, Redirect } from 'react-router'
+import { withRouter} from 'react-router'
 // import jwt_decode from 'jwt-decode'
 
 

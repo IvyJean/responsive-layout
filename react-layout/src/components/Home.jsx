@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 // import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+import {Button, Modal, Form} from 'react-bootstrap';
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { MDBIcon } from "mdbreact";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -86,7 +88,7 @@ const Container = styled.div`
   }
 `;
 
-const Button = styled.button`
+const Btn = styled.button`
   height: 3rem;
   padding: 0 2rem;
   text-transform: uppercase;
@@ -113,6 +115,7 @@ margin-right: auto;
 box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
 
+
 @media screen (max-width: 600px) {
   float: none;
   text-align: center;
@@ -124,43 +127,105 @@ class Home extends Component {
 
   constructor(props) {
     super(props)
-    this.textAreaRefs = [];
     this.state = {
       id: '',
       title: '',
       body: '',
       articleList: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
-      newArticleList: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
+      // newArticleList: localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [],
+      noteEditing: null,
+      currentEdit: "",
+      show: false,
     };
     this.handleDeleteArticle = this.handleDeleteArticle.bind(this);
+    // this.setNoteEditing = this.setNoteEditing.bind(this);
+
     // this.handleEditArticle = this.handleEditArticle.bind(this);
+    // this.onChange = this.onChange.bind(this);
+
+     // Edit Modal
+     this.handleShow = this.handleShow.bind(this);
+     this.handleClose = this.handleClose.bind(this);
+     this.handleEdit = this.handleEdit.bind(this);
   }
 
+  handleDeleteArticle = indexToDelete => {
+    let newArticleList = [...this.state.articleList].filter(
+      (article, index) => index !== indexToDelete
+    );
+    this.setState({ articleList: newArticleList });
+    localStorage.setItem('article', JSON.stringify(newArticleList));
+  };
 
+  // onEditSubmit(id, title, body){
+  //   let newArticleList =  [...this.state.articleList];
 
-  handleDeleteArticle(i) {
-    let newArticleList = this.state.articleList.slice(0);
-    let data = newArticleList.indexOf(i);
-    if (data > -1) {
-      newArticleList.splice(data, 1);
-      this.setState({ articleList: newArticleList });
-      localStorage.setItem('article', JSON.stringify(newArticleList));
-    }
-  }
+  //   newArticleList = newArticleList.map(article => {
+  //     if(article.id === id){
+  //         article.title = title
+  //         article.body = body
+  //     }
 
+  //     return article
+  //   })
 
+  //   this.setState({articleList: newArticleList});
+  //       localStorage.setItem('article', JSON.stringify(newArticleList));
+  // }
 
-//   handleEditArticle(i){
-//     let data = this.state.articleList;
-//     // data[i].done = true;
-//     this.setState((prevState) => {
-//       localStorage.setItem('article', JSON.stringify(prevState.data + 1));
-//       return{
-//         article: data,
-//         completedCount: prevState.data + 1
-//       }
-//     });
-// }
+  setNoteEditing = index => {
+    let newArticleList = [...this.state.articleList];
+
+    this.setState({ noteEditing: index});
+  };
+
+  // editNote = event => {
+  //   this.setState({ currentEdit: event.target.value });
+  // };
+
+  // newTitle(e){
+  //   this.setState({
+  //     newTitle: e.target.value,
+  //   });
+  // }
+
+  // newBody(e) {
+  //   this.setState({
+  //     newBody: e.target.value,
+  //   });
+  // }
+
+  onChange(event){
+    this.setState({
+        [event.target.name]: event.target.value
+    })
+};
+
+handleClose(){
+  this.setState({show: false});
+}
+handleShow(){
+  this.setState({show: true});
+}
+
+  // handleEditArticle = id => {
+  //   let article = localStorage.getItem('article') ? JSON.parse(localStorage.getItem('article')) : [];
+
+  //   for (let i = 0; i < article.length; i++) {
+  //     if (article[i].id === id) {
+
+  //      const  articleLists = {
+  //         id: article[i].id,
+  //         title: article[i].title,
+  //         body: article[i].body,
+  //         time: new Date().toLocaleString()
+  //       };
+  //       localStorage.setItem('article', JSON.stringify(articleLists));
+  //     }
+  //   }
+  // };
+
+    
 
   render() {
     const list = this.state.articleList;
@@ -202,13 +267,33 @@ class Home extends Component {
             </Col>
             <Col md="7" className="column1">
               {list.map((article, index) => (
-                <Card>
-                  <h1 className="title" id="title">{article.title}</h1>
-                  <p id="tStamp" className="tStamp">Created: {article.time}</p>
-                  <p className="body-text" id="body">{article.body}</p>
-                  <Button type="submit" onClick={this.handleDeleteArticle.bind(this, article)}>Delete</Button>
-                  {/* <Button type="submit" onClick={this.editArticle.bind(this, article)}>Edit</Button> */}
-                  {/* <Button type="submit" onClick={this.handleEditArticle.bind(this, article)}>Edit</Button> */}
+                <Card key={index}>
+                  {this.state.noteEditing === null ||
+                    this.state.noteEditing !== index ? (
+                      <Fragment>
+                        <h1 className="title" id="title">{article.title}</h1>
+                        <p id="tStamp" className="tStamp">Created: {article.time}</p>
+                        <p className="body-text" id="body">{article.body}</p>
+                        <Btn onClick={() => this.handleDeleteArticle(index)}><MDBIcon icon="trash-alt" /></Btn>
+                        <Btn onClick={() => this.setNoteEditing(index)}>  <MDBIcon icon="edit" /></Btn>
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        <input
+                          type="text"
+                          value={this.state.title}
+                          name= "title"
+                          onChange = {event => this.onChange(event)} /> <br /><br />
+                        <textarea
+                          className="body-text"
+                          id="body"
+                          name="body"
+                          value={this.state.body}
+                          onChange = {event => this.onChange(event)} /> <br /><br />
+                        <Btn onClick={() => this.handleEditArticle(index.id)}>Done</Btn>
+                        <Btn onClick={() => this.handleDeleteArticle(index)}><MDBIcon icon="trash-alt" /></Btn>
+                      </Fragment>
+                    )}
                   <hr />
                   <p className="comments">Comments</p>
                   <form>
@@ -217,7 +302,7 @@ class Home extends Component {
                     </label>
                     <br />
                     <div className="actions">
-                      <Button type="submit">Post</Button>
+                      <Btn type="submit">Post</Btn>
                     </div>
                   </form>
                 </Card>
